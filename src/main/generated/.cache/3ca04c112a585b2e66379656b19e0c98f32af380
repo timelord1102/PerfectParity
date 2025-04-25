@@ -1,0 +1,4 @@
+// 1.21.4	-999999999-01-01T00:00:00	Perfect Parity/Tags for minecraft:block
+1d97ce2ebfaa800901e17ad481a6463e19d45022 data/minecraft/tags/block/replaceable.json
+ba2ec4e6cd3e1b802ba7cc8cdf6154c885f56c90 data/minecraft/tags/block/replaceable_by_mushrooms.json
+1d97ce2ebfaa800901e17ad481a6463e19d45022 data/minecraft/tags/block/replaceable_by_trees.json
