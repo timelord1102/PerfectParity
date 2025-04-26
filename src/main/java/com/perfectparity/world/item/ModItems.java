@@ -23,18 +23,18 @@ public class ModItems {
     // public static final Item TEST_INSTANCE_BLOCK;
     // public static final Item WILDFLOWERS;
     // public static final Item LEAF_LITTER;
-    // public static final Item FIREFLY_BUSH;
+    public static final Item FIREFLY_BUSH;
 
     static {
         BUSH = registerBlock(ModBlocks.BUSH);
-        // CACTUS_FLOWER = registerBlock(BlocksMod.CACTUS_FLOWER);
-        // SHORT_DRY_GRASS = registerBlock(BlocksMod.SHORT_DRY_GRASS);
-        // TALL_DRY_GRASS = registerBlock(BlocksMod.TALL_DRY_GRASS);
-        // TEST_BLOCK = registerBlock(BlocksMod.TEST_BLOCK);
-        // TEST_INSTANCE_BLOCK = registerBlock(BlocksMod.TEST_INSTANCE_BLOCK);
-        // WILDFLOWERS = registerBlock(BlocksMod.WILDFLOWERS);
-        // LEAF_LITTER = registerBlock(BlocksMod.LEAF_LITTER);
-        // FIREFLY_BUSH = registerBlock(BlocksMod.FIREFLY_BUSH);
+        // CACTUS_FLOWER = registerBlock(ModBlocks.CACTUS_FLOWER);
+        // SHORT_DRY_GRASS = registerBlock(ModBlocks.SHORT_DRY_GRASS);
+        // TALL_DRY_GRASS = registerBlock(ModBlocks.TALL_DRY_GRASS);
+        // TEST_BLOCK = registerBlock(ModBlocks.TEST_BLOCK);
+        // TEST_INSTANCE_BLOCK = registerBlock(ModBlocks.TEST_INSTANCE_BLOCK);
+        // WILDFLOWERS = registerBlock(ModBlocks.WILDFLOWERS);
+        // LEAF_LITTER = registerBlock(ModBlocks.LEAF_LITTER);
+        FIREFLY_BUSH = registerBlock(ModBlocks.FIREFLY_BUSH);
     }
 
     public static Item registerBlock(Block block) {

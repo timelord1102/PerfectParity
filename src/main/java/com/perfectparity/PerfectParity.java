@@ -1,6 +1,7 @@
 package com.perfectparity;
 
-import com.perfectparity.data.world.gen.ModWorldGeneration;
+import com.perfectparity.data.worldgen.ModWorldGeneration;
+import com.perfectparity.particle.ModParticles;
 import com.perfectparity.world.item.ModItems;
 import com.perfectparity.world.level.block.ModBlocks;
 import net.fabricmc.api.ModInitializer;
@@ -8,6 +9,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sound.ModSounds;
 
 public class PerfectParity implements ModInitializer {
 	public static final String MOD_ID = "minecraft";
@@ -25,7 +27,9 @@ public class PerfectParity implements ModInitializer {
 
 		ModBlocks.initialize();
 		ModItems.initialize();
-		ModWorldGeneration.initialize();
+		ModWorldGeneration.generateModWorldGen();
+		ModSounds.registerSounds();
+		ModParticles.registerParticles();
 
 
 		CompostingChanceRegistry.INSTANCE.add(ModItems.BUSH, 0.3f);

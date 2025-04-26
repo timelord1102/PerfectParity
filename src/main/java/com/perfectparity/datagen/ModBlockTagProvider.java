@@ -28,12 +28,16 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider wrapperLookup) {
-        addVanillaTags(wrapperLookup);
+        addVanillaTags();
+        // Bush
         getOrCreateTagBuilder(BlockTags.REPLACEABLE).add(ModBlocks.BUSH);
         getOrCreateTagBuilder(BlockTags.REPLACEABLE_BY_TREES).add(ModBlocks.BUSH);
+
+        // Firefly Bush
+        getOrCreateTagBuilder(BlockTags.REPLACEABLE_BY_TREES).add(ModBlocks.FIREFLY_BUSH);
     }
 
-    protected void addVanillaTags(HolderLookup.Provider wrapperLookup) {
+    protected void addVanillaTags() {
         getOrCreateTagBuilder(REPLACEABLE_BY_MUSHROOMS)
                 .addOptionalTags(BlockTags.LEAVES, BlockTags.SMALL_FLOWERS)
                 .add(
@@ -64,8 +68,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         // ModBlocks.LEAF_LITTER,
                         // ModBlocks.SHORT_DRY_GRASS,
                         // ModBlocks.TALL_DRY_GRASS,
-                        ModBlocks.BUSH
-                        // ModBlocks.FIREFLY_BUSH
+                        ModBlocks.BUSH,
+                        ModBlocks.FIREFLY_BUSH
                 );
     }
 }

@@ -15,5 +15,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     @Override
     public void generate() {
         add(ModBlocks.BUSH, createShearsOrSilkTouchOnlyDrop(ModBlocks.BUSH));
+        dropSelf(ModBlocks.FIREFLY_BUSH);
     }
 }

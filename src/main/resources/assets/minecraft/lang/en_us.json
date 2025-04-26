@@ -1,3 +1,5 @@
 {
-  "block.minecraft.bush": "Bush"
+  "block.minecraft.bush": "Bush",
+  "block.minecraft.firefly_bush" : "Firefly Bush",
+  "subtitles.block.firefly_bush.idle": "Fireflies buzz"
 }

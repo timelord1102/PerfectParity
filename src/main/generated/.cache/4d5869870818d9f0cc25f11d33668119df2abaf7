@@ -1,5 +1,9 @@
 // 1.21.4	-999999999-01-01T00:00:00	Perfect Parity/Model Definitions
 64c91df9fd4d47076a1f710b95933ee1c77f3b28 assets/minecraft/blockstates/bush.json
+4c23518216524787ad847917d7c3b216f47f506d assets/minecraft/blockstates/firefly_bush.json
 eee6806df68642798c778972b13350296f7c608d assets/minecraft/items/bush.json
+0bcc037f2e8a5ace3d2ed7e55665fd8ff9207ad8 assets/minecraft/items/firefly_bush.json
 f77662b02172a82d8cbb7e33db5939e78bbb9f05 assets/minecraft/models/block/bush.json
+64cbe7bcdfacbf43a7ee67eae4892798a8c52e5b assets/minecraft/models/block/firefly_bush.json
 ba0ac3906ed5b2b9dbe536b6cbda129a2f4b166d assets/minecraft/models/item/bush.json
+9ebc8166e32c907ae55c209bd462e78a84ed4201 assets/minecraft/models/item/firefly_bush.json

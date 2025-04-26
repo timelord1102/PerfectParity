@@ -22,7 +22,7 @@ public class ModBlocks {
     // public static final Block TEST_INSTANCE_BLOCK;
     // public static final Block WILDFLOWERS;
     // public static final Block LEAF_LITTER;
-    // public static final Block FIREFLY_BUSH;
+    public static final Block FIREFLY_BUSH;
 
     static {
         BUSH = register("bush", ModBushBlockBonemealableBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).replaceable().noCollission().instabreak().sound(SoundType.GRASS).ignitedByLava().pushReaction(PushReaction.DESTROY));
@@ -33,7 +33,7 @@ public class ModBlocks {
         // TEST_INSTANCE_BLOCK = register("test_instance_block", TestInstanceBlock::new, Properties.of().noOcclusion().strength(-1.0F, 3600000.0F).noLootTable().isViewBlocking(Blocks::never));
         // WILDFLOWERS = register("wildflowers", FlowerBedBlock::new, Properties.of().mapColor(MapColor.PLANT).noCollission().sound(SoundType.PINK_PETALS).pushReaction(PushReaction.DESTROY));
         // LEAF_LITTER = register("leaf_litter", LeafLitterBlock::new, Properties.of().mapColor(MapColor.COLOR_BROWN).replaceable().noCollission().sound(SoundType.LEAF_LITTER).pushReaction(PushReaction.DESTROY));
-        // FIREFLY_BUSH = register("firefly_bush", FireflyBushBlock::new, Properties.of().mapColor(MapColor.PLANT).ignitedByLava().lightLevel((blockStatex) -> 2).noCollission().instabreak().sound(SoundType.SWEET_BERRY_BUSH).pushReaction(PushReaction.DESTROY));
+        FIREFLY_BUSH = register("firefly_bush", ModFireflyBushBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).ignitedByLava().lightLevel((blockStatex) -> 2).noCollission().instabreak().sound(SoundType.SWEET_BERRY_BUSH).pushReaction(PushReaction.DESTROY));
     }
 
     private static ResourceKey<Block> blockId(String string) {
