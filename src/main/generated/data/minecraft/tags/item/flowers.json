@@ -9,7 +9,7 @@
     "minecraft:spore_blossom",
     "minecraft:cactus_flower",
     {
-      "id": "#c:flowers/small",
+      "id": "#minecraft:small_flowers",
       "required": false
     },
     {

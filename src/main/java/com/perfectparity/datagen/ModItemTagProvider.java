@@ -44,7 +44,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 Items.SPORE_BLOSSOM,
                 ModItems.CACTUS_FLOWER
         ).addOptionalTags(
-                ConventionalItemTags.SMALL_FLOWERS,
+                ItemTags.SMALL_FLOWERS,
                 ConventionalItemTags.TALL_FLOWERS
         );
     }
