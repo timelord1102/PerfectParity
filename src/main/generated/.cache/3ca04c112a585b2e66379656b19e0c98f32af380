@@ -1,8 +1,8 @@
 // 1.21.4	-999999999-01-01T00:00:00	Perfect Parity/Tags for minecraft:block
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/bee_attractive.json
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/enderman_holdable.json
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/flowers.json
+08eea6b6c9260768fc8da46fa3a00432a3d3e09e data/minecraft/tags/block/bee_attractive.json
+08eea6b6c9260768fc8da46fa3a00432a3d3e09e data/minecraft/tags/block/enderman_holdable.json
+08eea6b6c9260768fc8da46fa3a00432a3d3e09e data/minecraft/tags/block/flowers.json
 1d97ce2ebfaa800901e17ad481a6463e19d45022 data/minecraft/tags/block/replaceable.json
 ad0f61fd65cb42f05ecbac4fd99dcebe5b7850c9 data/minecraft/tags/block/replaceable_by_mushrooms.json
 3a3a2b63558edba8bb4004d51c986645c9041a36 data/minecraft/tags/block/replaceable_by_trees.json
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/wall_post_override.json
+08eea6b6c9260768fc8da46fa3a00432a3d3e09e data/minecraft/tags/block/wall_post_override.json

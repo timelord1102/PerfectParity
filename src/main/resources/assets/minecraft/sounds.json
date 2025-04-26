@@ -51,5 +51,24 @@
       }
     ],
     "subtitle": "subtitles.block.firefly_bush.idle"
+  },
+  "block.cactus_flower.break": {
+    "sounds": [
+      "block/cactus_flower/break1",
+      "block/cactus_flower/break2",
+      "block/cactus_flower/break3",
+      "block/cactus_flower/break4",
+      "block/cactus_flower/break5"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.cactus_flower.place": {
+    "sounds": [
+      "block/cactus_flower/place1",
+      "block/cactus_flower/place2",
+      "block/cactus_flower/place3",
+      "block/cactus_flower/place4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
   }
 }

@@ -36,10 +36,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         // Firefly Bush
         getOrCreateTagBuilder(BlockTags.REPLACEABLE_BY_TREES).add(ModBlocks.FIREFLY_BUSH);
 
-        getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE);
-        getOrCreateTagBuilder(BlockTags.FLOWERS);
-        getOrCreateTagBuilder(BlockTags.BEE_ATTRACTIVE);
-        getOrCreateTagBuilder(BlockTags.WALL_POST_OVERRIDE);
+        getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE).add(ModBlocks.CACTUS_FLOWER);
+        getOrCreateTagBuilder(BlockTags.FLOWERS).add(ModBlocks.CACTUS_FLOWER);
+        getOrCreateTagBuilder(BlockTags.BEE_ATTRACTIVE).add(ModBlocks.CACTUS_FLOWER);
+        getOrCreateTagBuilder(BlockTags.WALL_POST_OVERRIDE).add(ModBlocks.CACTUS_FLOWER);
     }
 
     protected void addVanillaTags() {
