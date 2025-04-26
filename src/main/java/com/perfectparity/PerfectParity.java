@@ -2,6 +2,7 @@ package com.perfectparity;
 
 import com.perfectparity.data.worldgen.ModWorldGeneration;
 import com.perfectparity.particle.ModParticles;
+import com.perfectparity.utils.ModCustomTrades;
 import com.perfectparity.world.item.ModItems;
 import com.perfectparity.world.level.block.ModBlocks;
 import net.fabricmc.api.ModInitializer;
@@ -9,7 +10,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sound.ModSounds;
+import com.perfectparity.sound.ModSounds;
 
 public class PerfectParity implements ModInitializer {
 	public static final String MOD_ID = "minecraft";
@@ -30,8 +31,11 @@ public class PerfectParity implements ModInitializer {
 		ModWorldGeneration.generateModWorldGen();
 		ModSounds.registerSounds();
 		ModParticles.registerParticles();
+		ModCustomTrades.registerCustomTrades();
 
 
 		CompostingChanceRegistry.INSTANCE.add(ModItems.BUSH, 0.3f);
+		CompostingChanceRegistry.INSTANCE.add(ModItems.FIREFLY_BUSH, 0.3f);
+		CompostingChanceRegistry.INSTANCE.add(ModItems.CACTUS_FLOWER, 0.3f);
 	}
 }

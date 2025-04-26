@@ -16,7 +16,7 @@ import java.util.function.Function;
 
 public class ModItems {
     public static final Item BUSH;
-    // public static final Item CACTUS_FLOWER;
+    public static final Item CACTUS_FLOWER;
     // public static final Item SHORT_DRY_GRASS;
     // public static final Item TALL_DRY_GRASS;
     // public static final Item TEST_BLOCK;
@@ -27,7 +27,7 @@ public class ModItems {
 
     static {
         BUSH = registerBlock(ModBlocks.BUSH);
-        // CACTUS_FLOWER = registerBlock(ModBlocks.CACTUS_FLOWER);
+        CACTUS_FLOWER = registerBlock(ModBlocks.CACTUS_FLOWER);
         // SHORT_DRY_GRASS = registerBlock(ModBlocks.SHORT_DRY_GRASS);
         // TALL_DRY_GRASS = registerBlock(ModBlocks.TALL_DRY_GRASS);
         // TEST_BLOCK = registerBlock(ModBlocks.TEST_BLOCK);
@@ -65,6 +65,12 @@ public class ModItems {
     public static void initialize() {
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS)
                 .register((itemGroup) -> itemGroup.accept(ModItems.BUSH));
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS)
+                .register((itemGroup) -> itemGroup.accept(ModItems.FIREFLY_BUSH));
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS)
+                .register((itemGroup) -> itemGroup.accept(ModItems.CACTUS_FLOWER));
+
+
     }
 
 }

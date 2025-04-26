@@ -1,4 +1,4 @@
-package sound;
+package com.perfectparity.sound;
 
 import com.perfectparity.PerfectParity;
 import net.minecraft.core.Registry;

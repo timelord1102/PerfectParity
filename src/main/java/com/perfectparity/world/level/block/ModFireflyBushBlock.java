@@ -16,7 +16,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap.Types;
-import sound.ModSounds;
+import com.perfectparity.sound.ModSounds;
 
 public class ModFireflyBushBlock extends ModVegetationBlock implements ModBonemealableBlock {
     private static final double FIREFLY_CHANCE_PER_TICK = 0.7;

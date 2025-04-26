@@ -20,6 +20,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.createCrossBlock(ModBlocks.FIREFLY_BUSH, BlockModelGenerators.PlantType.EMISSIVE_NOT_TINTED);
         blockStateModelGenerator.registerSimpleFlatItemModel(ModItems.FIREFLY_BUSH);
+
+        blockStateModelGenerator.createCrossBlockWithDefaultItem(ModBlocks.CACTUS_FLOWER, BlockModelGenerators.PlantType.NOT_TINTED);
     }
 
     @Override

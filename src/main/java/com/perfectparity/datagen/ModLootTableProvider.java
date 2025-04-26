@@ -16,5 +16,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     public void generate() {
         add(ModBlocks.BUSH, createShearsOrSilkTouchOnlyDrop(ModBlocks.BUSH));
         dropSelf(ModBlocks.FIREFLY_BUSH);
+        dropSelf(ModBlocks.CACTUS_FLOWER);
     }
 }

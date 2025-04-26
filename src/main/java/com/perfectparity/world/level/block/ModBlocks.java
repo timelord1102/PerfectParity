@@ -15,7 +15,7 @@ import java.util.function.Function;
 
 public class ModBlocks {
     public static final Block BUSH;
-    // public static final Block CACTUS_FLOWER;
+    public static final Block CACTUS_FLOWER;
     // public static final Block SHORT_DRY_GRASS;
     // public static final Block TALL_DRY_GRASS;
     // public static final Block TEST_BLOCK;
@@ -26,7 +26,7 @@ public class ModBlocks {
 
     static {
         BUSH = register("bush", ModBushBlockBonemealableBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).replaceable().noCollission().instabreak().sound(SoundType.GRASS).ignitedByLava().pushReaction(PushReaction.DESTROY));
-        // CACTUS_FLOWER = register("cactus_flower", CactusFlowerBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).noCollission().instabreak().ignitedByLava().sound(SoundType.CACTUS_FLOWER).pushReaction(PushReaction.DESTROY));
+        CACTUS_FLOWER = register("cactus_flower", ModCactusFlowerBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).noCollission().instabreak().ignitedByLava()/*.sound(SoundType.CACTUS_FLOWER)*/.pushReaction(PushReaction.DESTROY));
         // SHORT_DRY_GRASS = register("short_dry_grass", ShortDryGrassBlock::new, Properties.of().mapColor(MapColor.COLOR_YELLOW).replaceable().noCollission().instabreak().sound(SoundType.GRASS).ignitedByLava().offsetType(OffsetType.XYZ).pushReaction(PushReaction.DESTROY));
         // TALL_DRY_GRASS = register("tall_dry_grass", TallDryGrassBlock::new, Properties.of().mapColor(MapColor.COLOR_YELLOW).replaceable().noCollission().instabreak().sound(SoundType.GRASS).ignitedByLava().offsetType(OffsetType.XYZ).pushReaction(PushReaction.DESTROY));
         // TEST_BLOCK = register("test_block", TestBlock::new, Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).strength(-1.0F, 3600000.0F).noLootTable());
