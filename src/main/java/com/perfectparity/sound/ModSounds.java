@@ -14,7 +14,14 @@ public class ModSounds {
     public static final SoundEvent CACTUS_FLOWER_BREAK = registerSoundEvent("block.cactus_flower.break");
     public static final SoundEvent CACTUS_FLOWER_PLACE = registerSoundEvent("block.cactus_flower.place");
 
+    public static final SoundEvent LEAF_LITTER_BREAK = registerSoundEvent("block.leaf_litter.break");
+    public static final SoundEvent LEAF_LITTER_STEP = registerSoundEvent("block.leaf_litter.step");
+    public static final SoundEvent LEAF_LITTER_PLACE = registerSoundEvent("block.leaf_litter.place");
+    public static final SoundEvent LEAF_LITTER_HIT = registerSoundEvent("block.leaf_litter.hit");
+    public static final SoundEvent LEAF_LITTER_FALL = registerSoundEvent("block.leaf_litter.fall");
+
     public static final SoundType CACTUS_FLOWER = new SoundType(1.0F, 1.0F, CACTUS_FLOWER_BREAK, SoundEvents.EMPTY, CACTUS_FLOWER_PLACE, SoundEvents.EMPTY, SoundEvents.EMPTY);
+    public static final SoundType LEAF_LITTER = new SoundType(1.0F, 1.0F, LEAF_LITTER_BREAK, LEAF_LITTER_STEP, LEAF_LITTER_PLACE, LEAF_LITTER_HIT, LEAF_LITTER_FALL);
 
     private static SoundEvent registerSoundEvent(String name) {
         ResourceLocation resourceLocation = ResourceLocation.tryBuild(ResourceLocation.DEFAULT_NAMESPACE, name);

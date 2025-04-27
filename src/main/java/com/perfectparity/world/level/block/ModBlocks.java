@@ -22,18 +22,18 @@ public class ModBlocks {
     // public static final Block TEST_BLOCK;
     // public static final Block TEST_INSTANCE_BLOCK;
     // public static final Block WILDFLOWERS;
-    // public static final Block LEAF_LITTER;
+    public static final Block LEAF_LITTER;
     public static final Block FIREFLY_BUSH;
 
     static {
-        BUSH = register("bush", ModBushBlockBonemealableBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).replaceable().noCollission().instabreak().sound(SoundType.GRASS).ignitedByLava().pushReaction(PushReaction.DESTROY));
+        BUSH = register("bush", ModBushBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).replaceable().noCollission().instabreak().sound(SoundType.GRASS).ignitedByLava().pushReaction(PushReaction.DESTROY));
         CACTUS_FLOWER = register("cactus_flower", ModCactusFlowerBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).noCollission().instabreak().ignitedByLava().sound(ModSounds.CACTUS_FLOWER).pushReaction(PushReaction.DESTROY));
         // SHORT_DRY_GRASS = register("short_dry_grass", ShortDryGrassBlock::new, Properties.of().mapColor(MapColor.COLOR_YELLOW).replaceable().noCollission().instabreak().sound(SoundType.GRASS).ignitedByLava().offsetType(OffsetType.XYZ).pushReaction(PushReaction.DESTROY));
         // TALL_DRY_GRASS = register("tall_dry_grass", TallDryGrassBlock::new, Properties.of().mapColor(MapColor.COLOR_YELLOW).replaceable().noCollission().instabreak().sound(SoundType.GRASS).ignitedByLava().offsetType(OffsetType.XYZ).pushReaction(PushReaction.DESTROY));
         // TEST_BLOCK = register("test_block", TestBlock::new, Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).strength(-1.0F, 3600000.0F).noLootTable());
         // TEST_INSTANCE_BLOCK = register("test_instance_block", TestInstanceBlock::new, Properties.of().noOcclusion().strength(-1.0F, 3600000.0F).noLootTable().isViewBlocking(Blocks::never));
         // WILDFLOWERS = register("wildflowers", FlowerBedBlock::new, Properties.of().mapColor(MapColor.PLANT).noCollission().sound(SoundType.PINK_PETALS).pushReaction(PushReaction.DESTROY));
-        // LEAF_LITTER = register("leaf_litter", LeafLitterBlock::new, Properties.of().mapColor(MapColor.COLOR_BROWN).replaceable().noCollission().sound(SoundType.LEAF_LITTER).pushReaction(PushReaction.DESTROY));
+        LEAF_LITTER = register("leaf_litter", ModLeafLitterBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).replaceable().noCollission().sound(ModSounds.LEAF_LITTER).pushReaction(PushReaction.DESTROY));
         FIREFLY_BUSH = register("firefly_bush", ModFireflyBushBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).ignitedByLava().lightLevel((blockStatex) -> 2).noCollission().instabreak().sound(SoundType.SWEET_BERRY_BUSH).pushReaction(PushReaction.DESTROY));
     }
 
@@ -46,8 +46,8 @@ public class ModBlocks {
     }
 
     public static Block register(ResourceKey<Block> resourceKey, Function<BlockBehaviour.Properties, Block> function, BlockBehaviour.Properties properties) {
-        Block block = (Block)function.apply(properties.setId(resourceKey));
-        return (Block) Registry.register(BuiltInRegistries.BLOCK, resourceKey, block);
+        Block block = function.apply(properties.setId(resourceKey));
+        return Registry.register(BuiltInRegistries.BLOCK, resourceKey, block);
     }
 
     public static void initialize() {

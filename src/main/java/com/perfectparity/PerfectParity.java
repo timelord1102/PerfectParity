@@ -1,13 +1,14 @@
 package com.perfectparity;
 
 import com.perfectparity.data.worldgen.ModWorldGeneration;
+import com.perfectparity.data.worldgen.features.ModFeatures;
+import com.perfectparity.data.worldgen.features.decorators.ModTreeDecoratorType;
 import com.perfectparity.particle.ModParticles;
 import com.perfectparity.utils.ModCustomTrades;
 import com.perfectparity.world.item.ModItems;
 import com.perfectparity.world.level.block.ModBlocks;
 import net.fabricmc.api.ModInitializer;
 
-import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.perfectparity.sound.ModSounds;
@@ -32,10 +33,7 @@ public class PerfectParity implements ModInitializer {
 		ModSounds.registerSounds();
 		ModParticles.registerParticles();
 		ModCustomTrades.registerCustomTrades();
-
-
-		CompostingChanceRegistry.INSTANCE.add(ModItems.BUSH, 0.3f);
-		CompostingChanceRegistry.INSTANCE.add(ModItems.FIREFLY_BUSH, 0.3f);
-		CompostingChanceRegistry.INSTANCE.add(ModItems.CACTUS_FLOWER, 0.3f);
+		ModFeatures.registerFeatures();
+		ModTreeDecoratorType.registerTreeDecorators();
 	}
 }

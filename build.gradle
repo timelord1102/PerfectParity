@@ -18,17 +18,18 @@ repositories {
 	// for more information about repositories.
 }
 
-/* loom {
-	splitEnvironmentSourceSets()
+ loom {
+	accessWidenerPath = file('src/main/resources/biome.accesswidener')
+	 /*splitEnvironmentSourceSets()
 
-	mods {
-		"perfect-parity" {
-			sourceSet sourceSets.main
-			sourceSet sourceSets.client
-		}
-	}
+     mods {
+         "perfect-parity" {
+             sourceSet sourceSets.main
+             sourceSet sourceSets.client
+         }
+     }*/
 
-} */
+ }
 
 fabricApi {
 	configureDataGeneration {
@@ -44,6 +45,7 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-item-api-v1:${project.fabric_version}"
 	
 }
 

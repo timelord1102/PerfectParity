@@ -3,7 +3,9 @@
 	"package": "com.perfectparity.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-      "CactusFlowerMixin"
+      "CactusFlowerMixin",
+		"GetBiomeWeatherMixin",
+		"BiomeBuilderMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
