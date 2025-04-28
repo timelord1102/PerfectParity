@@ -1,13 +1,15 @@
 {
-	"required": true,
-	"package": "com.perfectparity.mixin",
-	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-      "CactusFlowerMixin",
-		"GetBiomeWeatherMixin",
-		"BiomeBuilderMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
+  "required": true,
+  "package": "com.perfectparity.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "BiomeBuilderMixin",
+    "CactusFlowerMixin",
+    "DeadBushMixin",
+    "GetBiomeWeatherMixin",
+    "SandMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
 	}
 }

@@ -18,19 +18,19 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap.Types;
 import com.perfectparity.sound.ModSounds;
 
-public class ModFireflyBushBlock extends ModVegetationBlock implements ModBonemealableBlock {
+public class FireflyBushBlock extends ModVegetationBlock implements ModBonemealableBlock {
     private static final double FIREFLY_CHANCE_PER_TICK = 0.7;
     private static final double FIREFLY_HORIZONTAL_RANGE = (double)10.0F;
     private static final double FIREFLY_VERTICAL_RANGE = (double)5.0F;
     private static final int FIREFLY_SPAWN_MAX_BRIGHTNESS_LEVEL = 13;
     private static final int FIREFLY_AMBIENT_SOUND_CHANCE_ONE_IN = 30;
-    public static final MapCodec<ModFireflyBushBlock> CODEC = simpleCodec(ModFireflyBushBlock::new);
+    public static final MapCodec<FireflyBushBlock> CODEC = simpleCodec(FireflyBushBlock::new);
 
-    public ModFireflyBushBlock(BlockBehaviour.Properties properties) {
+    public FireflyBushBlock(BlockBehaviour.Properties properties) {
         super(properties);
     }
 
-    protected MapCodec<? extends ModFireflyBushBlock> codec() {
+    protected MapCodec<? extends FireflyBushBlock> codec() {
         return CODEC;
     }
 

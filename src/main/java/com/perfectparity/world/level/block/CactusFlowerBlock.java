@@ -11,15 +11,15 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class ModCactusFlowerBlock extends ModVegetationBlock {
-    public static final MapCodec<ModCactusFlowerBlock> CODEC = simpleCodec(ModCactusFlowerBlock::new);
-    private static final VoxelShape SHAPE = column((double)14.0F, (double)0.0F, (double)12.0F);
+public class CactusFlowerBlock extends ModVegetationBlock {
+    public static final MapCodec<CactusFlowerBlock> CODEC = simpleCodec(CactusFlowerBlock::new);
+    private static final VoxelShape SHAPE = ModBlocks.column((double)14.0F, (double)0.0F, (double)12.0F);
 
-    public MapCodec<? extends ModCactusFlowerBlock> codec() {
+    public MapCodec<? extends CactusFlowerBlock> codec() {
         return CODEC;
     }
 
-    public ModCactusFlowerBlock(BlockBehaviour.Properties properties) {
+    public CactusFlowerBlock(BlockBehaviour.Properties properties) {
         super(properties);
     }
 
@@ -30,15 +30,5 @@ public class ModCactusFlowerBlock extends ModVegetationBlock {
     protected boolean mayPlaceOn(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos) {
         BlockState blockState2 = blockGetter.getBlockState(blockPos);
         return blockState2.is(Blocks.CACTUS) || blockState2.is(Blocks.FARMLAND) || blockState2.isFaceSturdy(blockGetter, blockPos, Direction.UP, SupportType.CENTER);
-    }
-
-    public static VoxelShape column(double d, double e, double f) {
-        return column(d, d, e, f);
-    }
-
-    public static VoxelShape column(double d, double e, double f, double g) {
-        double h = d / (double)2.0F;
-        double i = e / (double)2.0F;
-        return box((double)8.0F - h, f, (double)8.0F - i, (double)8.0F + h, g, (double)8.0F + i);
     }
 }

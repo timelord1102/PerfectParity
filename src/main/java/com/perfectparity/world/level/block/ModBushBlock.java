@@ -7,17 +7,16 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class ModBushBlock extends BushBlock implements BonemealableBlock {
+public class ModBushBlock extends net.minecraft.world.level.block.BushBlock implements BonemealableBlock {
     public static final MapCodec<net.minecraft.world.level.block.BushBlock> CODEC = simpleCodec(ModBushBlock::new);
-    private static final VoxelShape SHAPE = Block.box(2.0F, 0.0F, 2.0F, 14.0F, 13.0F, 14.0F);
+    private static final VoxelShape SHAPE = ModBlocks.column(16.0F, 0.0F, 13.0F);
+
 
     public MapCodec<net.minecraft.world.level.block.BushBlock> codec() {
         return CODEC;

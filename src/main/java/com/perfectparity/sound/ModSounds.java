@@ -20,6 +20,12 @@ public class ModSounds {
     public static final SoundEvent LEAF_LITTER_HIT = registerSoundEvent("block.leaf_litter.hit");
     public static final SoundEvent LEAF_LITTER_FALL = registerSoundEvent("block.leaf_litter.fall");
 
+    public static final SoundEvent DEAD_BUSH_IDLE = registerSoundEvent("block.deadbush.idle");
+
+    public static final SoundEvent SAND_IDLE = registerSoundEvent("block.sand.idle");
+
+    public static final SoundEvent DRY_GRASS = registerSoundEvent("block.dry_grass.ambient");
+
     public static final SoundType CACTUS_FLOWER = new SoundType(1.0F, 1.0F, CACTUS_FLOWER_BREAK, SoundEvents.EMPTY, CACTUS_FLOWER_PLACE, SoundEvents.EMPTY, SoundEvents.EMPTY);
     public static final SoundType LEAF_LITTER = new SoundType(1.0F, 1.0F, LEAF_LITTER_BREAK, LEAF_LITTER_STEP, LEAF_LITTER_PLACE, LEAF_LITTER_HIT, LEAF_LITTER_FALL);
 

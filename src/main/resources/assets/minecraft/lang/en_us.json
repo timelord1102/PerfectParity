@@ -3,5 +3,7 @@
   "block.minecraft.firefly_bush" : "Firefly Bush",
   "block.minecraft.cactus_flower" : "Cactus Flower",
   "block.minecraft.leaf_litter": "Leaf Litter",
+  "block.minecraft.tall_dry_grass": "Tall Dry Grass",
+  "block.minecraft.short_dry_grass": "Short Dry Grass",
   "subtitles.block.firefly_bush.idle": "Fireflies buzz"
 }

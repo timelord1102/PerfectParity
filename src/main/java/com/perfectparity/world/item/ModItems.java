@@ -20,8 +20,8 @@ import java.util.function.Function;
 public class ModItems {
     public static final Item BUSH;
     public static final Item CACTUS_FLOWER;
-    // public static final Item SHORT_DRY_GRASS;
-    // public static final Item TALL_DRY_GRASS;
+    public static final Item SHORT_DRY_GRASS;
+    public static final Item TALL_DRY_GRASS;
     // public static final Item TEST_BLOCK;
     // public static final Item TEST_INSTANCE_BLOCK;
     // public static final Item WILDFLOWERS;
@@ -31,8 +31,8 @@ public class ModItems {
     static {
         BUSH = registerBlock(ModBlocks.BUSH);
         CACTUS_FLOWER = registerBlock(ModBlocks.CACTUS_FLOWER);
-        // SHORT_DRY_GRASS = registerBlock(ModBlocks.SHORT_DRY_GRASS);
-        // TALL_DRY_GRASS = registerBlock(ModBlocks.TALL_DRY_GRASS);
+        SHORT_DRY_GRASS = registerBlock(ModBlocks.SHORT_DRY_GRASS);
+        TALL_DRY_GRASS = registerBlock(ModBlocks.TALL_DRY_GRASS);
         // TEST_BLOCK = registerBlock(ModBlocks.TEST_BLOCK);
         // TEST_INSTANCE_BLOCK = registerBlock(ModBlocks.TEST_INSTANCE_BLOCK);
         // WILDFLOWERS = registerBlock(ModBlocks.WILDFLOWERS);
@@ -68,7 +68,11 @@ public class ModItems {
     public static void initialize() {
         // add after short dry grass later
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS)
-                .register((itemGroup) -> itemGroup.addAfter(Items.FERN, ModItems.BUSH));
+                .register((itemGroup) -> itemGroup.addAfter(Items.FERN, ModItems.SHORT_DRY_GRASS));
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS)
+                .register((itemGroup) -> itemGroup.addAfter(Items.LARGE_FERN, ModItems.TALL_DRY_GRASS));
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS)
+                .register((itemGroup) -> itemGroup.addAfter(ModItems.SHORT_DRY_GRASS, ModItems.BUSH));
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS)
                 .register((itemGroup) -> itemGroup.addAfter(Items.SPORE_BLOSSOM, ModItems.FIREFLY_BUSH));
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS)
@@ -83,6 +87,8 @@ public class ModItems {
 
     public static void registerFuels() {
         FuelRegistryEvents.BUILD.register((builder, context) -> builder.add(LEAF_LITTER, 100));
+        FuelRegistryEvents.BUILD.register((builder, context) -> builder.add(SHORT_DRY_GRASS, 100));
+        FuelRegistryEvents.BUILD.register((builder, context) -> builder.add(TALL_DRY_GRASS, 100));
     }
 
     public static void registerCompostable() {
@@ -90,6 +96,8 @@ public class ModItems {
         CompostingChanceRegistry.INSTANCE.add(ModItems.FIREFLY_BUSH, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(ModItems.CACTUS_FLOWER, 0.3f);
         CompostingChanceRegistry.INSTANCE.add(ModItems.LEAF_LITTER, 0.3f);
+        CompostingChanceRegistry.INSTANCE.add(ModItems.SHORT_DRY_GRASS, 0.3f);
+        CompostingChanceRegistry.INSTANCE.add(ModItems.TALL_DRY_GRASS, 0.3f);
     }
 
 }

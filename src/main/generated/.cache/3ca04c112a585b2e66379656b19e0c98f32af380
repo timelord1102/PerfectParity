@@ -1,9 +1,12 @@
 // 1.21.4	-999999999-01-01T00:00:00	Perfect Parity/Tags for minecraft:block
 08eea6b6c9260768fc8da46fa3a00432a3d3e09e data/minecraft/tags/block/bee_attractive.json
+91298092263229c22ed59f780495f30405f23e44 data/minecraft/tags/block/dead_bush_may_place_on.json
 08eea6b6c9260768fc8da46fa3a00432a3d3e09e data/minecraft/tags/block/enderman_holdable.json
 08eea6b6c9260768fc8da46fa3a00432a3d3e09e data/minecraft/tags/block/flowers.json
 3ab88f32a4bbfa8d9a0882fcdcdc0fea4c5ffcf2 data/minecraft/tags/block/inside_step_sound_blocks.json
-275a44093f548a50ddc082e55fcb8e0e157fb393 data/minecraft/tags/block/replaceable.json
-0d505208ce701aa4f0593779fedcb200c8face4d data/minecraft/tags/block/replaceable_by_mushrooms.json
-4dc2d5d0b94a3fb4f81ee9723a0091bd7ec41e87 data/minecraft/tags/block/replaceable_by_trees.json
+d8549ed0a6b120b24ad5de272abf8e9a39554f26 data/minecraft/tags/block/plays_ambient_desert_dry_vegetation_block_sounds.json
+69fa3c13cd9fa3bd0a84cfdfe43b9d23da07b619 data/minecraft/tags/block/plays_ambient_desert_sand_block_sounds.json
+3f22f8808fdd82d55518022e2206b7a652845c37 data/minecraft/tags/block/replaceable.json
+1949cfbcc4950ffece80fb08ac390fe33e68061f data/minecraft/tags/block/replaceable_by_mushrooms.json
+703315a8e307ef78568f8b763cc34afd12e550d1 data/minecraft/tags/block/replaceable_by_trees.json
 08eea6b6c9260768fc8da46fa3a00432a3d3e09e data/minecraft/tags/block/wall_post_override.json

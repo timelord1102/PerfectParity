@@ -28,21 +28,21 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class ModLeafLitterBlock extends ModVegetationBlock {
-    public static final MapCodec<ModLeafLitterBlock> CODEC = simpleCodec(ModLeafLitterBlock::new);
+public class LeafLitterBlock extends ModVegetationBlock {
+    public static final MapCodec<LeafLitterBlock> CODEC = simpleCodec(LeafLitterBlock::new);
     public static final int MIN_LEAVES = 1;
     public static final int MAX_LEAVES = 4;
     public static final EnumProperty<Direction> FACING;
     public static final IntegerProperty AMOUNT;
     private static final BiFunction<Direction, Integer, VoxelShape> SHAPE_BY_PROPERTIES;
 
-    public ModLeafLitterBlock(BlockBehaviour.Properties properties) {
+    public LeafLitterBlock(BlockBehaviour.Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(AMOUNT, 1));
     }
 
 
-    protected MapCodec<ModLeafLitterBlock> codec() {
+    protected MapCodec<LeafLitterBlock> codec() {
         return CODEC;
     }
 

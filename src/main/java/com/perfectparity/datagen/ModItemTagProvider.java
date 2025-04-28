@@ -30,6 +30,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     protected void addTags(HolderLookup.Provider wrapperLookup) {
         addVanillaTags();
         getOrCreateTagBuilder(ItemTags.BEE_FOOD).add(ModItems.CACTUS_FLOWER);
+        getOrCreateTagBuilder(ItemTags.SHEEP_FOOD).add(ModItems.SHORT_DRY_GRASS);
+        getOrCreateTagBuilder(ItemTags.SHEEP_FOOD).add(ModItems.TALL_DRY_GRASS);
     }
 
     protected void addVanillaTags() {

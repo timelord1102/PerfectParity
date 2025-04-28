@@ -35,6 +35,9 @@ public class PerfectParityClient implements ClientModInitializer {
 		ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) ->
 				world != null && pos != null ? DryFoliageColor.getTint(world, pos) : DryFoliageColor.FOLIAGE_DRY_DEFAULT, ModBlocks.LEAF_LITTER);
 
+		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TALL_DRY_GRASS, RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SHORT_DRY_GRASS, RenderType.cutout());
+
 	}
 	private static void registerColormap() {
 		try (InputStream in = ClientEntityEvents.class.getResourceAsStream(PATH)) {

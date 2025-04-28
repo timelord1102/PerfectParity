@@ -32,5 +32,12 @@ public class ModBushGeneration {
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SWAMP), GenerationStep.Decoration.VEGETAL_DECORATION,
                 ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.parse("minecraft:patch_firefly_bush_near_water_swamp")));
+
+
+        // Dry Grass
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.DESERT), GenerationStep.Decoration.VEGETAL_DECORATION,
+                ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.parse("minecraft:patch_dry_grass_desert")));
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.BADLANDS, Biomes.WOODED_BADLANDS, Biomes.ERODED_BADLANDS), GenerationStep.Decoration.VEGETAL_DECORATION,
+                ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.parse("minecraft:patch_dry_grass_badlands")));
     }
 }

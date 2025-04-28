@@ -123,5 +123,178 @@
       "block/leaf_litter/step6"
     ],
     "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.dry_grass.ambient": {
+    "sounds": [
+      "block/dry_grass/wind1",
+      "block/dry_grass/wind2",
+      "block/dry_grass/wind3",
+      "block/dry_grass/wind4",
+      "block/dry_grass/wind5",
+      "block/dry_grass/wind6",
+      "block/dry_grass/wind7",
+      "block/dry_grass/wind8",
+      "block/dry_grass/wind9",
+      "block/dry_grass/wind10",
+      "block/dry_grass/wind11",
+      "block/dry_grass/wind12"
+    ],
+    "subtitle": "subtitles.block.dry_grass.ambient"
+  },
+  "block.deadbush.idle": {
+    "sounds": [
+      {
+        "name": "block/deadbush/sandblock_version/bushrustle1",
+        "volume": 4.0
+      },
+      {
+        "name": "block/deadbush/sandblock_version/bushrustle2",
+        "volume": 4.0
+      },
+      {
+        "name": "block/deadbush/sandblock_version/bushrustle3",
+        "volume": 4.0
+      },
+      {
+        "name": "block/deadbush/sandblock_version/creakysand1",
+        "volume": 4.0
+      },
+      {
+        "name": "block/deadbush/sandblock_version/crickets",
+        "volume": 4.0,
+        "weight": 3
+      },
+      {
+        "name": "block/deadbush/sandblock_version/howlingwind1",
+        "volume": 4.0
+      },
+      {
+        "name": "block/deadbush/sandblock_version/insect1",
+        "volume": 4.0
+      },
+      {
+        "name": "block/deadbush/sandblock_version/leaves",
+        "volume": 4.0
+      },
+      {
+        "name": "block/deadbush/sandblock_version/movingsand1",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "block/deadbush/sandblock_version/movingsand2",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "block/deadbush/sandblock_version/movingsand3",
+        "volume": 4.0,
+        "weight": 2
+      }
+    ],
+    "subtitle": "subtitles.block.deadbush.idle"
+  },
+  "block.sand.idle": {
+    "sounds": [
+      {
+        "name": "block/sand/sand1",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "block/sand/sand2",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "block/sand/sand3",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "block/sand/sand4",
+        "volume": 4.0
+      },
+      {
+        "name": "block/sand/sand5",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "block/sand/sand6",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "block/sand/sand7",
+        "volume": 4.0
+      },
+      {
+        "name": "block/sand/sand8",
+        "volume": 4.0
+      },
+      {
+        "name": "block/sand/sand9",
+        "volume": 4.0
+      },
+      {
+        "name": "block/sand/sand10",
+        "volume": 4.0
+      },
+      {
+        "name": "block/sand/sand10",
+        "volume": 4.0,
+        "weight": 2
+      },
+      {
+        "name": "block/sand/sand11",
+        "volume": 4.0
+      },
+      {
+        "name": "block/sand/sand12",
+        "volume": 4.0
+      },
+      {
+        "name": "block/sand/sand12",
+        "volume": 4.0
+      },
+      {
+        "name": "block/sand/sand13",
+        "volume": 4.0
+      },
+      {
+        "name": "block/sand/sand14",
+        "volume": 4.0
+      },
+      {
+        "name": "block/sand/sand15",
+        "volume": 4.0
+      },
+      {
+        "name": "block/sand/sand16",
+        "volume": 4.0
+      },
+      {
+        "name": "block/sand/sand17",
+        "volume": 4.0
+      },
+      {
+        "name": "block/sand/sand18",
+        "volume": 4.0
+      },
+      {
+        "name": "block/sand/sand19",
+        "volume": 4.0
+      },
+      {
+        "name": "block/sand/sand20",
+        "volume": 4.0
+      },
+      {
+        "name": "block/sand/sand21",
+        "volume": 4.0
+      }
+    ],
+    "subtitle": "subtitles.block.sand.idle"
   }
 }

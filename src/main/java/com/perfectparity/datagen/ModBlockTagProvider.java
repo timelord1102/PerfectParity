@@ -17,6 +17,8 @@ import java.util.concurrent.CompletableFuture;
 public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     public static final TagKey<Block> REPLACEABLE_BY_MUSHROOMS = create("replaceable_by_mushrooms");
+    public static final TagKey<Block> TRIGGERS_AMBIENT_DESERT_DRY_VEGETATION_BLOCK_SOUNDS = create("plays_ambient_desert_dry_vegetation_block_sounds");
+    public static final TagKey<Block> TRIGGERS_AMBIENT_DESERT_SAND_BLOCK_SOUNDS = create("plays_ambient_desert_sand_block_sounds");
 
     private static TagKey<Block> create(String string) {
         return TagKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace(string));
@@ -46,11 +48,15 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.REPLACEABLE).add(ModBlocks.LEAF_LITTER);
         getOrCreateTagBuilder(BlockTags.REPLACEABLE_BY_TREES).add(ModBlocks.LEAF_LITTER);
         getOrCreateTagBuilder(BlockTags.INSIDE_STEP_SOUND_BLOCKS).add(ModBlocks.LEAF_LITTER);
+
+        //Dry Grass
+        getOrCreateTagBuilder(BlockTags.REPLACEABLE_BY_TREES).add(ModBlocks.SHORT_DRY_GRASS, ModBlocks.TALL_DRY_GRASS);
+        getOrCreateTagBuilder(BlockTags.REPLACEABLE).add(ModBlocks.SHORT_DRY_GRASS, ModBlocks.TALL_DRY_GRASS);
     }
 
     protected void addVanillaTags() {
         getOrCreateTagBuilder(REPLACEABLE_BY_MUSHROOMS)
-                .addOptionalTags(BlockTags.LEAVES, BlockTags.SMALL_FLOWERS)
+                .forceAddTags(BlockTags.LEAVES, BlockTags.SMALL_FLOWERS)
                 .add(
                         Blocks.PALE_MOSS_CARPET,
                         Blocks.SHORT_GRASS,
@@ -77,10 +83,20 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         Blocks.NETHER_SPROUTS,
                         Blocks.CRIMSON_ROOTS,
                         ModBlocks.LEAF_LITTER,
-                        // ModBlocks.SHORT_DRY_GRASS,
-                        // ModBlocks.TALL_DRY_GRASS,
+                        ModBlocks.SHORT_DRY_GRASS,
+                        ModBlocks.TALL_DRY_GRASS,
                         ModBlocks.BUSH,
                         ModBlocks.FIREFLY_BUSH
                 );
+
+        getOrCreateTagBuilder(BlockTags.DEAD_BUSH_MAY_PLACE_ON)
+                .add(Blocks.FARMLAND);
+
+        getOrCreateTagBuilder(TRIGGERS_AMBIENT_DESERT_DRY_VEGETATION_BLOCK_SOUNDS)
+                .forceAddTags(BlockTags.TERRACOTTA)
+                .add(Blocks.SAND, Blocks.RED_SAND);
+
+        getOrCreateTagBuilder(TRIGGERS_AMBIENT_DESERT_SAND_BLOCK_SOUNDS)
+                .add(Blocks.SAND, Blocks.RED_SAND).forceAddTags(BlockTags.TERRACOTTA);
     }
 }

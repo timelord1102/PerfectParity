@@ -57,7 +57,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         createLeafLitter(ModBlocks.LEAF_LITTER, blockStateModelGenerator);
 
-        // blockStateModelGenerator.createFlowerBed(ModBlocks.LEAF_LITTER);
+        blockStateModelGenerator.createCrossBlockWithDefaultItem(ModBlocks.TALL_DRY_GRASS, BlockModelGenerators.PlantType.NOT_TINTED);
+        blockStateModelGenerator.createCrossBlockWithDefaultItem(ModBlocks.SHORT_DRY_GRASS, BlockModelGenerators.PlantType.NOT_TINTED);
     }
 
     @Override
