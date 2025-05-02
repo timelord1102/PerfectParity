@@ -1,0 +1,54 @@
+{
+  "type": "minecraft:loot_table",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "nbt": "{variant:normal}"
+                  }
+                }
+              ],
+              "name": "minecraft:egg"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "nbt": "{variant:warm}"
+                  }
+                }
+              ],
+              "name": "minecraft:dirt"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "nbt": "{variant:cold}"
+                  }
+                }
+              ],
+              "name": "minecraft:diamond"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

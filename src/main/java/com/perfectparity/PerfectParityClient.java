@@ -1,11 +1,7 @@
 package com.perfectparity;
 
-import com.perfectparity.entity.ModEntities;
-import com.perfectparity.entity.client.ColdCowModel;
-import com.perfectparity.entity.client.ModCowModel;
-import com.perfectparity.entity.client.ModCowRenderer;
+import com.perfectparity.entity.client.*;
 import com.perfectparity.entity.models.ModModelLayers;
-import com.perfectparity.entity.client.WarmCowModel;
 import com.perfectparity.particle.FireflyParticle;
 import com.perfectparity.particle.ModParticles;
 import com.perfectparity.utils.DryFoliageColor;
@@ -16,7 +12,6 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientEntityEvents;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 
@@ -87,6 +82,15 @@ public class PerfectParityClient implements ClientModInitializer {
 		EntityModelLayerRegistry.registerModelLayer(
 				ModModelLayers.COLD_COW_BABY,
 				ColdCowModel::createBabyBodyLayer
+		);
+
+		EntityModelLayerRegistry.registerModelLayer(
+				ModModelLayers.COLD_CHICKEN,
+				ColdChickenModel::createBodyLayer   // static method returning LayerDefinition
+		);
+		EntityModelLayerRegistry.registerModelLayer(
+				ModModelLayers.COLD_CHICKEN_BABY,
+				ColdChickenModel::createBabyBodyLayer
 		);
 
 		//EntityRendererRegistry.register(ModEntities.TEST_COW, ModCowRenderer::new);

@@ -5,6 +5,7 @@
   "mixins": [
     "BiomeBuilderMixin",
     "CactusFlowerMixin",
+    "ChickenMixin",
     "CowMixin",
     "DeadBushMixin",
     "GetBiomeWeatherMixin",
@@ -14,6 +15,6 @@
     "defaultRequire": 1
   },
   "client": [
-    "CowRendererMixin"
+    "MobRendererMixin"
   ]
 }

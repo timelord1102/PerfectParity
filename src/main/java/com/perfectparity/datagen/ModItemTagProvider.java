@@ -17,6 +17,7 @@ import java.util.concurrent.CompletableFuture;
 public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     public static final TagKey<Item> FLOWERS = create("flowers");
+    public static final TagKey<Item> EGGS = create("eggs");
 
     private static TagKey<Item> create(String string) {
         return TagKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace(string));
@@ -49,6 +50,12 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         ).addOptionalTags(
                 ItemTags.SMALL_FLOWERS,
                 ConventionalItemTags.TALL_FLOWERS
+        );
+
+        getOrCreateTagBuilder(EGGS).add(
+                Items.EGG,
+                ModItems.BLUE_EGG,
+                ModItems.BROWN_EGG
         );
     }
 }

@@ -8,10 +8,8 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 
 import java.util.function.BiFunction;
@@ -28,6 +26,9 @@ public class ModItems {
     public static final Item LEAF_LITTER;
     public static final Item FIREFLY_BUSH;
 
+    public static final Item BROWN_EGG;
+    public static final Item BLUE_EGG;
+
     static {
         BUSH = registerBlock(ModBlocks.BUSH);
         CACTUS_FLOWER = registerBlock(ModBlocks.CACTUS_FLOWER);
@@ -38,6 +39,12 @@ public class ModItems {
         WILDFLOWERS = registerBlock(ModBlocks.WILDFLOWERS);
         LEAF_LITTER = registerBlock(ModBlocks.LEAF_LITTER);
         FIREFLY_BUSH = registerBlock(ModBlocks.FIREFLY_BUSH);
+        BLUE_EGG = registerItem(itemId("blue_egg"), properties -> new CustomEggItem("cold", properties), new Item.Properties().stacksTo(16));
+        BROWN_EGG = registerItem(itemId("brown_egg"), properties -> new CustomEggItem("warm", properties), new Item.Properties().stacksTo(16));
+    }
+
+    private static ResourceKey<Item> itemId(String string) {
+        return ResourceKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace(string));
     }
 
     public static Item registerBlock(Block block) {
@@ -77,11 +84,14 @@ public class ModItems {
                 .register((itemGroup) -> itemGroup.addAfter(Items.SPORE_BLOSSOM, ModItems.FIREFLY_BUSH));
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS)
                 .register((itemGroup) -> itemGroup.addAfter(Items.TORCHFLOWER, ModItems.CACTUS_FLOWER));
-        // Add after wildflowers later
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS)
                 .register((itemGroup) -> itemGroup.addAfter(Items.PINK_PETALS, ModItems.WILDFLOWERS));
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS)
                 .register((itemGroup) -> itemGroup.addAfter(ModItems.WILDFLOWERS, ModItems.LEAF_LITTER));
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS)
+                .register((itemGroup) -> itemGroup.addAfter(Items.EGG, ModItems.BROWN_EGG));
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS)
+                .register((itemGroup) -> itemGroup.addAfter(ModItems.BROWN_EGG, ModItems.BLUE_EGG));
 
         registerFuels();
         registerCompostable();

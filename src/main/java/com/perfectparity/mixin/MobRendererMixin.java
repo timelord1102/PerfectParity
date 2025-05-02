@@ -1,5 +1,6 @@
 package com.perfectparity.mixin;
 
+import com.perfectparity.entity.client.ModChickenRenderer;
 import com.perfectparity.entity.client.ModCowRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.world.entity.EntityType;
@@ -13,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 
 @Mixin(net.minecraft.client.renderer.entity.EntityRenderers.class)
-public class CowRendererMixin {
+public class MobRendererMixin {
     @Shadow
     @Final
     @Mutable
@@ -24,6 +25,10 @@ public class CowRendererMixin {
         PROVIDERS.put(
                 EntityType.COW,
                 (EntityRendererProvider) ModCowRenderer::new
+        );
+        PROVIDERS.put(
+                EntityType.CHICKEN,
+                (EntityRendererProvider) ModChickenRenderer::new
         );
     }
 }
