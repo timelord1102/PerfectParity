@@ -1,2 +1,3 @@
 accessWidener v2 named
 accessible class net/minecraft/world/level/biome/Biome$ClimateSettings
+accessible field net/minecraft/client/model/geom/builders/LayerDefinition mesh Lnet/minecraft/client/model/geom/builders/MeshDefinition;

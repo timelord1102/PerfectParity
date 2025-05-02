@@ -5,11 +5,15 @@
   "mixins": [
     "BiomeBuilderMixin",
     "CactusFlowerMixin",
+    "CowMixin",
     "DeadBushMixin",
     "GetBiomeWeatherMixin",
     "SandMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-	}
+  },
+  "client": [
+    "CowRendererMixin"
+  ]
 }

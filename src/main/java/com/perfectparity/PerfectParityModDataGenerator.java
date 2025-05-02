@@ -3,6 +3,8 @@ package com.perfectparity;
 import com.perfectparity.datagen.*;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.minecraft.core.registries.Registries;
+
 
 public class PerfectParityModDataGenerator implements DataGeneratorEntrypoint {
 	@Override
@@ -14,5 +16,12 @@ public class PerfectParityModDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModItemTagProvider::new);
 		pack.addProvider(ModRecipeProvider::new);
+		pack.addProvider((output, registries) -> new ModBiomeTagProvider(
+				output,
+				Registries.BIOME,
+				registries
+		));
 	}
+
 }
+

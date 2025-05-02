@@ -1,14 +1,18 @@
 package com.perfectparity;
 
+import com.perfectparity.data.registries.ModEntityDataSerializers;
+import com.perfectparity.data.registries.ModRegistries;
 import com.perfectparity.data.worldgen.ModWorldGeneration;
 import com.perfectparity.data.worldgen.features.ModFeatures;
 import com.perfectparity.data.worldgen.features.decorators.ModTreeDecoratorType;
+import com.perfectparity.entity.ModEntities;
 import com.perfectparity.particle.ModParticles;
 import com.perfectparity.utils.ModCustomTrades;
 import com.perfectparity.world.item.ModItems;
 import com.perfectparity.world.level.block.ModBlocks;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.perfectparity.sound.ModSounds;
@@ -35,5 +39,10 @@ public class PerfectParity implements ModInitializer {
 		ModCustomTrades.registerCustomTrades();
 		ModFeatures.registerFeatures();
 		ModTreeDecoratorType.registerTreeDecorators();
+		// ModEntityDataSerializers.registerSerializers();
+		ModRegistries.registerRegistries();
+		ModEntities.registerModEntities();
+
+		//FabricDefaultAttributeRegistry.register(ModEntities.TEST_COW, ModCow.createAttributes());
 	}
 }

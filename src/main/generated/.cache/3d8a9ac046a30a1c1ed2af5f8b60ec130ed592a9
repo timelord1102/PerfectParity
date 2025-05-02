@@ -1,0 +1,3 @@
+// 1.21.4	-999999999-01-01T00:00:00	Perfect Parity/Tags for minecraft:worldgen/biome
+5c8f6a98ba34a9699777671ca927af670d2b596e data/minecraft/tags/worldgen/biome/spawns_cold_variant_farm_animals.json
+a6ae9ec3ca8560734ac8bcdd5729e4935567147f data/minecraft/tags/worldgen/biome/spawns_warm_variant_farm_animals.json

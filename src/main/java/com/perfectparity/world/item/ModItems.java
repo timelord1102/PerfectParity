@@ -24,7 +24,7 @@ public class ModItems {
     public static final Item TALL_DRY_GRASS;
     // public static final Item TEST_BLOCK;
     // public static final Item TEST_INSTANCE_BLOCK;
-    // public static final Item WILDFLOWERS;
+    public static final Item WILDFLOWERS;
     public static final Item LEAF_LITTER;
     public static final Item FIREFLY_BUSH;
 
@@ -35,7 +35,7 @@ public class ModItems {
         TALL_DRY_GRASS = registerBlock(ModBlocks.TALL_DRY_GRASS);
         // TEST_BLOCK = registerBlock(ModBlocks.TEST_BLOCK);
         // TEST_INSTANCE_BLOCK = registerBlock(ModBlocks.TEST_INSTANCE_BLOCK);
-        // WILDFLOWERS = registerBlock(ModBlocks.WILDFLOWERS);
+        WILDFLOWERS = registerBlock(ModBlocks.WILDFLOWERS);
         LEAF_LITTER = registerBlock(ModBlocks.LEAF_LITTER);
         FIREFLY_BUSH = registerBlock(ModBlocks.FIREFLY_BUSH);
     }
@@ -79,7 +79,9 @@ public class ModItems {
                 .register((itemGroup) -> itemGroup.addAfter(Items.TORCHFLOWER, ModItems.CACTUS_FLOWER));
         // Add after wildflowers later
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS)
-                .register((itemGroup) -> itemGroup.addAfter(Items.PINK_PETALS, ModItems.LEAF_LITTER));
+                .register((itemGroup) -> itemGroup.addAfter(Items.PINK_PETALS, ModItems.WILDFLOWERS));
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS)
+                .register((itemGroup) -> itemGroup.addAfter(ModItems.WILDFLOWERS, ModItems.LEAF_LITTER));
 
         registerFuels();
         registerCompostable();

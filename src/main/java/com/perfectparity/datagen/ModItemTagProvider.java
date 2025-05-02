@@ -30,6 +30,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     protected void addTags(HolderLookup.Provider wrapperLookup) {
         addVanillaTags();
         getOrCreateTagBuilder(ItemTags.BEE_FOOD).add(ModItems.CACTUS_FLOWER);
+        getOrCreateTagBuilder(ItemTags.BEE_FOOD).add(ModItems.WILDFLOWERS);
         getOrCreateTagBuilder(ItemTags.SHEEP_FOOD).add(ModItems.SHORT_DRY_GRASS);
         getOrCreateTagBuilder(ItemTags.SHEEP_FOOD).add(ModItems.TALL_DRY_GRASS);
     }
@@ -41,7 +42,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 Items.FLOWERING_AZALEA,
                 Items.MANGROVE_PROPAGULE,
                 Items.PINK_PETALS,
-                //ModItems.WILDFLOWERS,
+                ModItems.WILDFLOWERS,
                 Items.CHORUS_FLOWER,
                 Items.SPORE_BLOSSOM,
                 ModItems.CACTUS_FLOWER

@@ -52,6 +52,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         //Dry Grass
         getOrCreateTagBuilder(BlockTags.REPLACEABLE_BY_TREES).add(ModBlocks.SHORT_DRY_GRASS, ModBlocks.TALL_DRY_GRASS);
         getOrCreateTagBuilder(BlockTags.REPLACEABLE).add(ModBlocks.SHORT_DRY_GRASS, ModBlocks.TALL_DRY_GRASS);
+
+        //Wildflowers
+        getOrCreateTagBuilder(BlockTags.FLOWERS).add(ModBlocks.WILDFLOWERS);
+        getOrCreateTagBuilder(BlockTags.BEE_ATTRACTIVE).add(ModBlocks.WILDFLOWERS);
     }
 
     protected void addVanillaTags() {

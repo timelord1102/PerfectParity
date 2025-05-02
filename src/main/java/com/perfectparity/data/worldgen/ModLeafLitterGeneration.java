@@ -14,5 +14,17 @@ public class ModLeafLitterGeneration {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.DARK_FOREST),
                 GenerationStep.Decoration.VEGETAL_DECORATION,
                 ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.parse("minecraft:patch_leaf_litter")));
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.FOREST),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.parse("minecraft:trees_birch_and_oak_leaf_litter")));
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.BIRCH_FOREST),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.parse("minecraft:wildflowers_birch_forest")));
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.MEADOW),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.parse("minecraft:wildflowers_meadow")));
     }
 }

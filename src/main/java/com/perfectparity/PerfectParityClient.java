@@ -1,5 +1,11 @@
 package com.perfectparity;
 
+import com.perfectparity.entity.ModEntities;
+import com.perfectparity.entity.client.ColdCowModel;
+import com.perfectparity.entity.client.ModCowModel;
+import com.perfectparity.entity.client.ModCowRenderer;
+import com.perfectparity.entity.models.ModModelLayers;
+import com.perfectparity.entity.client.WarmCowModel;
 import com.perfectparity.particle.FireflyParticle;
 import com.perfectparity.particle.ModParticles;
 import com.perfectparity.utils.DryFoliageColor;
@@ -9,6 +15,8 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientEntityEvents;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 
@@ -22,6 +30,7 @@ public class PerfectParityClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		registerColormap();
+		registerModelLayers();
         // This entrypoint is suitable for setting up client-specific logic, such as rendering.
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BUSH, RenderType.cutout());
 		ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> BiomeColors.getAverageGrassColor(world, pos), ModBlocks.BUSH);
@@ -38,6 +47,13 @@ public class PerfectParityClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TALL_DRY_GRASS, RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SHORT_DRY_GRASS, RenderType.cutout());
 
+		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WILDFLOWERS, RenderType.cutout());
+		ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
+			if (tintIndex == 1) {
+				return BiomeColors.getAverageGrassColor(world, pos);
+			}
+			return 0xFFFFFFFF;
+		}, ModBlocks.WILDFLOWERS);
 	}
 	private static void registerColormap() {
 		try (InputStream in = ClientEntityEvents.class.getResourceAsStream(PATH)) {
@@ -53,5 +69,26 @@ public class PerfectParityClient implements ClientModInitializer {
 		} catch (IOException e) {
 			PerfectParity.LOGGER.error("Failed to load dry_foliage.png from classpath", e);
 		}
+	}
+
+	private static void registerModelLayers() {
+		EntityModelLayerRegistry.registerModelLayer(
+				ModModelLayers.WARM_COW,
+				WarmCowModel::createBodyLayer   // static method returning LayerDefinition
+		);
+		EntityModelLayerRegistry.registerModelLayer(
+				ModModelLayers.WARM_COW_BABY,
+				WarmCowModel::createBabyBodyLayer   // or your baby version method
+		);
+		EntityModelLayerRegistry.registerModelLayer(
+				ModModelLayers.COLD_COW,
+				ColdCowModel::createBodyLayer   // static method returning LayerDefinition
+		);
+		EntityModelLayerRegistry.registerModelLayer(
+				ModModelLayers.COLD_COW_BABY,
+				ColdCowModel::createBabyBodyLayer
+		);
+
+		//EntityRendererRegistry.register(ModEntities.TEST_COW, ModCowRenderer::new);
 	}
 }

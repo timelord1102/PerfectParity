@@ -29,6 +29,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(ModBlocks.FIREFLY_BUSH);
         dropSelf(ModBlocks.CACTUS_FLOWER);
         add(ModBlocks.LEAF_LITTER, createSegmentedBlockDrops(ModBlocks.LEAF_LITTER));
+        add(ModBlocks.WILDFLOWERS, createPetalsDrops(ModBlocks.WILDFLOWERS));
     }
 
     public LootTable.Builder createSegmentedBlockDrops(Block block) {

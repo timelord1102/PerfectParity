@@ -10,8 +10,6 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 
 public class ModTreeGeneration {
     public static void generateTrees() {
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.FOREST),
-                GenerationStep.Decoration.VEGETAL_DECORATION,
-                ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.parse("minecraft:trees_birch_and_oak_leaf_litter")));
+
     }
 }
