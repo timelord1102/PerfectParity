@@ -31,7 +31,7 @@
                   }
                 }
               ],
-              "name": "minecraft:dirt"
+              "name": "minecraft:brown_egg"
             },
             {
               "type": "minecraft:item",
@@ -44,7 +44,7 @@
                   }
                 }
               ],
-              "name": "minecraft:diamond"
+              "name": "minecraft:blue_egg"
             }
           ]
         }
