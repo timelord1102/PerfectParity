@@ -2,6 +2,7 @@ package com.perfectparity.mixin;
 
 import com.perfectparity.entity.client.ModChickenRenderer;
 import com.perfectparity.entity.client.ModCowRenderer;
+import com.perfectparity.entity.client.ModPigRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.world.entity.EntityType;
 import org.spongepowered.asm.mixin.Final;
@@ -29,6 +30,10 @@ public class MobRendererMixin {
         PROVIDERS.put(
                 EntityType.CHICKEN,
                 (EntityRendererProvider) ModChickenRenderer::new
+        );
+        PROVIDERS.put(
+                EntityType.PIG,
+                (EntityRendererProvider) ModPigRenderer::new
         );
     }
 }

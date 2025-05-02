@@ -69,15 +69,15 @@ public class PerfectParityClient implements ClientModInitializer {
 	private static void registerModelLayers() {
 		EntityModelLayerRegistry.registerModelLayer(
 				ModModelLayers.WARM_COW,
-				WarmCowModel::createBodyLayer   // static method returning LayerDefinition
+				WarmCowModel::createBodyLayer
 		);
 		EntityModelLayerRegistry.registerModelLayer(
 				ModModelLayers.WARM_COW_BABY,
-				WarmCowModel::createBabyBodyLayer   // or your baby version method
+				WarmCowModel::createBabyBodyLayer
 		);
 		EntityModelLayerRegistry.registerModelLayer(
 				ModModelLayers.COLD_COW,
-				ColdCowModel::createBodyLayer   // static method returning LayerDefinition
+				ColdCowModel::createBodyLayer
 		);
 		EntityModelLayerRegistry.registerModelLayer(
 				ModModelLayers.COLD_COW_BABY,
@@ -85,14 +85,40 @@ public class PerfectParityClient implements ClientModInitializer {
 		);
 
 		EntityModelLayerRegistry.registerModelLayer(
+				ModModelLayers.NEW_COW,
+				ModCowModel::createBodyLayer
+		);
+		EntityModelLayerRegistry.registerModelLayer(
+				ModModelLayers.NEW_COW_BABY,
+				ModCowModel::createBabyBodyLayer
+		);
+
+		EntityModelLayerRegistry.registerModelLayer(
 				ModModelLayers.COLD_CHICKEN,
-				ColdChickenModel::createBodyLayer   // static method returning LayerDefinition
+				ColdChickenModel::createBodyLayer
 		);
 		EntityModelLayerRegistry.registerModelLayer(
 				ModModelLayers.COLD_CHICKEN_BABY,
 				ColdChickenModel::createBabyBodyLayer
 		);
 
-		//EntityRendererRegistry.register(ModEntities.TEST_COW, ModCowRenderer::new);
+		EntityModelLayerRegistry.registerModelLayer(
+				ModModelLayers.COLD_PIG,
+				ColdPigModel::createBodyLayer
+		);
+		EntityModelLayerRegistry.registerModelLayer(
+				ModModelLayers.COLD_PIG_BABY,
+				ColdPigModel::createBabyBodyLayer
+		);
+
+		EntityModelLayerRegistry.registerModelLayer(
+				ModModelLayers.NEW_PIG,
+				ModPigModel::createBodyLayer
+		);
+		EntityModelLayerRegistry.registerModelLayer(
+				ModModelLayers.NEW_PIG_BABY,
+				ModPigModel::createBabyBodyLayer
+		);
+
 	}
 }

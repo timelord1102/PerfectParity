@@ -9,7 +9,9 @@
     "CowMixin",
     "DeadBushMixin",
     "GetBiomeWeatherMixin",
-    "SandMixin"
+    "PigMixin",
+    "SandMixin",
+    "SheepMixin"
   ],
   "injectors": {
     "defaultRequire": 1

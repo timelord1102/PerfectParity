@@ -24,14 +24,13 @@ public class ModCowRenderer extends MobRenderer<Cow, CowRenderState, ModCowModel
     private static final Map<MobVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(MobVariant.class), map -> {
                 map.put(MobVariant.NORMAL,
-                        ResourceLocation.withDefaultNamespace("textures/entity/cow/cow.png"));
+                        ResourceLocation.withDefaultNamespace("textures/entity/cow/temperate_cow.png"));
                 map.put(MobVariant.COLD,
                         ResourceLocation.withDefaultNamespace("textures/entity/cow/cold_cow.png"));
                 map.put(MobVariant.WARM,
                         ResourceLocation.withDefaultNamespace("textures/entity/cow/warm_cow.png"));
             });
 
-    private MobVariant MOD_COW_VARIANT;
     private Map<MobVariant, AdultAndBabyModelPair<ModCowModel>> VARIANT_MODELS = new HashMap<>();
 
     public ModCowRenderer(EntityRendererProvider.Context context) {
@@ -42,8 +41,8 @@ public class ModCowRenderer extends MobRenderer<Cow, CowRenderState, ModCowModel
     private static Map<MobVariant, AdultAndBabyModelPair<ModCowModel>> bakeModels(EntityRendererProvider.Context context) {
         EnumMap<MobVariant, AdultAndBabyModelPair<ModCowModel>> map = new EnumMap<>(MobVariant.class);
         map.put(MobVariant.NORMAL, new AdultAndBabyModelPair<>(
-                new ModCowModel(context.bakeLayer(ModelLayers.COW)),
-                new ModCowModel(context.bakeLayer(ModelLayers.COW_BABY))
+                new ModCowModel(context.bakeLayer(ModModelLayers.NEW_COW)),
+                new ModCowModel(context.bakeLayer(ModModelLayers.NEW_COW_BABY))
         ));
         map.put(MobVariant.WARM, new AdultAndBabyModelPair<>(
                 new ModCowModel(context.bakeLayer(ModModelLayers.WARM_COW)),
@@ -66,7 +65,7 @@ public class ModCowRenderer extends MobRenderer<Cow, CowRenderState, ModCowModel
         try {
             return LOCATION_BY_VARIANT.get(cowRenderState.variant);
         } catch (Exception e) {
-            return ResourceLocation.withDefaultNamespace("textures/entity/cow/cow.png");
+            return ResourceLocation.withDefaultNamespace("textures/entity/cow/temperate_cow.png");
         }
     }
 

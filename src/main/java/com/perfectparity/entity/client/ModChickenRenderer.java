@@ -24,7 +24,7 @@ public class ModChickenRenderer extends MobRenderer<Chicken, ModChickenRenderSta
     private static final Map<MobVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(MobVariant.class), map -> {
                 map.put(MobVariant.NORMAL,
-                        ResourceLocation.withDefaultNamespace("textures/entity/chicken.png"));
+                        ResourceLocation.withDefaultNamespace("textures/entity/chicken/temperate_chicken.png"));
                 map.put(MobVariant.COLD,
                         ResourceLocation.withDefaultNamespace("textures/entity/chicken/cold_chicken.png"));
                 map.put(MobVariant.WARM,

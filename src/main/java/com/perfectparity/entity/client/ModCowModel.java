@@ -22,6 +22,11 @@ public class ModCowModel extends QuadrupedModel<LivingEntityRenderState> {
         return LayerDefinition.create(meshDefinition, 64, 64);
     }
 
+    public static LayerDefinition createBabyBodyLayer() {
+        MeshDefinition meshDefinition = BABY_TRANSFORMER.apply(createBaseCowModel());
+        return LayerDefinition.create(meshDefinition, 64, 64);
+    }
+
     static MeshDefinition createBaseCowModel() {
         MeshDefinition meshDefinition = new MeshDefinition();
         PartDefinition partDefinition = meshDefinition.getRoot();
