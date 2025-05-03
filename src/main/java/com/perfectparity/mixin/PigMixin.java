@@ -19,15 +19,18 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biome;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Pig.class)
 public class PigMixin extends Animal implements VariantMob {
 
     @Final
-    @Shadow(remap = false)
+    @Shadow
     private static EntityDataAccessor<Boolean> DATA_SADDLE_ID;
     @Final
-    @Shadow(remap = false)
+    @Shadow
     private static EntityDataAccessor<Integer> DATA_BOOST_TIME;
     @Shadow private final ItemBasedSteering steering;
 
@@ -45,7 +48,11 @@ public class PigMixin extends Animal implements VariantMob {
         return itemStack.is(ItemTags.PIG_FOOD);
     }
 
-    @Override
+    /**
+     * @author timelord1102
+     * @reason custom variant logic
+     */
+    @Overwrite
     public @Nullable Pig getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
         Pig pig = (Pig)EntityType.PIG.create(serverLevel, EntitySpawnReason.BREEDING);
         if (pig != null && ageableMob instanceof Pig pig2) {
@@ -69,25 +76,18 @@ public class PigMixin extends Animal implements VariantMob {
         this.entityData.set(DATA_VARIANT_ID, pigVariant.getId());
     }
 
-    @Override
-    public void addAdditionalSaveData(CompoundTag tag) {
-        super.addAdditionalSaveData(tag);
-        tag.putString("variant", this.getTypeVariant());
-        this.steering.addAdditionalSaveData(tag);
+    @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
+    public void addAdditionalSaveData(CompoundTag compoundTag, CallbackInfo ci) {
+        compoundTag.putString("variant", this.getTypeVariant());
     }
 
-    @Override
-    public void readAdditionalSaveData(CompoundTag tag) {
-        super.readAdditionalSaveData(tag);
-        this.entityData.set(DATA_VARIANT_ID, tag.getString("variant"));
-        this.steering.readAdditionalSaveData(tag);
+    @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
+    public void readAdditionalSaveData(CompoundTag compoundTag, CallbackInfo ci) {
+        this.entityData.set(DATA_VARIANT_ID, compoundTag.getString("variant"));
     }
 
-    @Override
-    public void defineSynchedData(SynchedEntityData.Builder builder) {
-        super.defineSynchedData(builder);
-        builder.define(DATA_SADDLE_ID, false);
-        builder.define(DATA_BOOST_TIME, 0);
+    @Inject(method = "defineSynchedData", at = @At("TAIL"))
+    public void defineSynchedData(SynchedEntityData.Builder builder, CallbackInfo ci) {
         builder.define(DATA_VARIANT_ID, "normal");
     }
 

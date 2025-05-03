@@ -22,6 +22,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biome;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(Chicken.class)
@@ -34,6 +35,11 @@ public class ChickenMixin extends Animal implements VariantMob {
         super(entityType, level);
     }
 
+    /**
+     * @author timelord1102
+     * @reason custom variant logic
+     */
+    @Overwrite
     @Nullable
     public Chicken getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
         Chicken chicken = (Chicken)EntityType.CHICKEN.create(serverLevel, EntitySpawnReason.BREEDING);

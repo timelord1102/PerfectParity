@@ -17,6 +17,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biome;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Unique;
 
 
@@ -31,6 +32,11 @@ public abstract class CowMixin extends Animal implements VariantMob {
         super(entityType, level);
     }
 
+    /**
+     * @author timelord1102
+     * @reason custom variant logic
+     */
+    @Overwrite
     @Nullable
     public Cow getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
         Cow cow = (Cow)EntityType.COW.create(serverLevel, EntitySpawnReason.BREEDING);
