@@ -4,6 +4,7 @@ import com.perfectparity.world.level.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -36,7 +37,9 @@ public class ModItems {
         TALL_DRY_GRASS = registerBlock(ModBlocks.TALL_DRY_GRASS);
         // TEST_BLOCK = registerBlock(ModBlocks.TEST_BLOCK);
         // TEST_INSTANCE_BLOCK = registerBlock(ModBlocks.TEST_INSTANCE_BLOCK);
-        WILDFLOWERS = registerBlock(ModBlocks.WILDFLOWERS);
+        if (!FabricLoader.getInstance().isModLoaded("wilderwild")) {
+            WILDFLOWERS = registerBlock(ModBlocks.WILDFLOWERS);
+        } else WILDFLOWERS = null;
         LEAF_LITTER = registerBlock(ModBlocks.LEAF_LITTER);
         FIREFLY_BUSH = registerBlock(ModBlocks.FIREFLY_BUSH);
         BLUE_EGG = registerItem(itemId("blue_egg"), properties -> new CustomEggItem("cold", properties), new Item.Properties().stacksTo(16));
@@ -84,10 +87,15 @@ public class ModItems {
                 .register((itemGroup) -> itemGroup.addAfter(Items.SPORE_BLOSSOM, ModItems.FIREFLY_BUSH));
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS)
                 .register((itemGroup) -> itemGroup.addAfter(Items.TORCHFLOWER, ModItems.CACTUS_FLOWER));
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS)
-                .register((itemGroup) -> itemGroup.addAfter(Items.PINK_PETALS, ModItems.WILDFLOWERS));
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS)
-                .register((itemGroup) -> itemGroup.addAfter(ModItems.WILDFLOWERS, ModItems.LEAF_LITTER));
+        if (!(WILDFLOWERS == null)) {
+            ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS)
+                    .register((itemGroup) -> itemGroup.addAfter(Items.PINK_PETALS, ModItems.WILDFLOWERS));
+            ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS)
+                    .register((itemGroup) -> itemGroup.addAfter(ModItems.WILDFLOWERS, ModItems.LEAF_LITTER));
+        } else {
+            ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS)
+                    .register((itemGroup) -> itemGroup.addAfter(Items.PINK_PETALS, ModItems.LEAF_LITTER));
+        }
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS)
                 .register((itemGroup) -> itemGroup.addAfter(Items.EGG, ModItems.BROWN_EGG));
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS)
