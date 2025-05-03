@@ -5,7 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.item.DyeColor;
@@ -28,8 +28,10 @@ public abstract class SheepMixin  {
         return SheepColorSpawnRules.getSheepColor(holder, serverLevelAccessor.getRandom());
     }
 
+
+
     @Inject(method = "finalizeSpawn", at = @At("RETURN"))
-    private void customFinalize(ServerLevelAccessor serverLevelAccessor , DifficultyInstance difficultyInstance, EntitySpawnReason entitySpawnReason, SpawnGroupData spawnGroupData, CallbackInfoReturnable<SpawnGroupData> cir) {
+    private void customFinalize(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData, CallbackInfoReturnable<SpawnGroupData> cir) {
         this.setColor(newGetRandomSheepColor(serverLevelAccessor, ((Entity)(Object)this).blockPosition()));
     }
 }

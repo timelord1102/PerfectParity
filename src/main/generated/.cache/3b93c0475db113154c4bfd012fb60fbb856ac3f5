@@ -1,8 +1,8 @@
-// 1.21.4	-999999999-01-01T00:00:00	Perfect Parity/Block Loot Tables
-830bc0d5886c24e69719ce8d090b7d83a3b02a95 data/minecraft/loot_table/blocks/bush.json
-1d06e220c1fa186c7861acff1955cddf35d4cd5f data/minecraft/loot_table/blocks/cactus_flower.json
-1eb44d6c5a1052b2fe6d506f4e6b073bb1eae83a data/minecraft/loot_table/blocks/firefly_bush.json
-d08b3d47501cced95cf356ca1ae54082fe3ef98f data/minecraft/loot_table/blocks/leaf_litter.json
-9a2f3654a6b5614d2136ce1b6aafe2b6783a0738 data/minecraft/loot_table/blocks/short_dry_grass.json
-089f7cc848963954cd7973b66a6cbdf1c79ee7d1 data/minecraft/loot_table/blocks/tall_dry_grass.json
-c8832d21d916df469a38f3cfee1a00d37442f848 data/minecraft/loot_table/blocks/wildflowers.json
+// 1.21.1	2025-05-03T19:21:51.6331855	Perfect Parity/Block Loot Tables
+de08713163f90dfd0fd6437e1ccd8f9e4ff2f7ac data\minecraft\loot_table\blocks\tall_dry_grass.json
+a8423692ad5c7132b4a7a6919e74bb35e0286a58 data\minecraft\loot_table\blocks\short_dry_grass.json
+1eb44d6c5a1052b2fe6d506f4e6b073bb1eae83a data\minecraft\loot_table\blocks\firefly_bush.json
+86c9e8900848fa3e4d79fd580bfec246b17a1a39 data\minecraft\loot_table\blocks\bush.json
+c8832d21d916df469a38f3cfee1a00d37442f848 data\minecraft\loot_table\blocks\wildflowers.json
+1d06e220c1fa186c7861acff1955cddf35d4cd5f data\minecraft\loot_table\blocks\cactus_flower.json
+d08b3d47501cced95cf356ca1ae54082fe3ef98f data\minecraft\loot_table\blocks\leaf_litter.json

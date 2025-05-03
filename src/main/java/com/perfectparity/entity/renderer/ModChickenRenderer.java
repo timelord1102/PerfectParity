@@ -13,13 +13,14 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.animal.Chicken;
 
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ModChickenRenderer extends MobRenderer<Chicken, ModChickenRenderState, ModChickenModel> {
+public class ModChickenRenderer extends MobRenderer<Chicken, ModChickenModel<Chicken>> {
 
     private static final Map<MobVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(MobVariant.class), map -> {
@@ -42,48 +43,40 @@ public class ModChickenRenderer extends MobRenderer<Chicken, ModChickenRenderSta
         EnumMap<MobVariant, AdultAndBabyModelPair<ModChickenModel>> map = new EnumMap<>(MobVariant.class);
         map.put(MobVariant.NORMAL, new AdultAndBabyModelPair<>(
                 new ModChickenModel(context.bakeLayer(ModelLayers.CHICKEN)),
-                new ModChickenModel(context.bakeLayer(ModelLayers.CHICKEN_BABY))
+                new ModChickenModel(context.bakeLayer(ModelLayers.CHICKEN))
         ));
         map.put(MobVariant.WARM, new AdultAndBabyModelPair<>(
                 new ModChickenModel(context.bakeLayer(ModelLayers.CHICKEN)),
-                new ModChickenModel(context.bakeLayer(ModelLayers.CHICKEN_BABY))
+                new ModChickenModel(context.bakeLayer(ModelLayers.CHICKEN))
         ));
         map.put(MobVariant.COLD, new AdultAndBabyModelPair<>(
                 new ModChickenModel(context.bakeLayer(ModModelLayers.COLD_CHICKEN)),
-                new ModChickenModel(context.bakeLayer(ModModelLayers.COLD_CHICKEN_BABY))
+                new ModChickenModel(context.bakeLayer(ModModelLayers.COLD_CHICKEN))
         ));
         return map;
     }
 
     @Override
-    public ModChickenRenderState createRenderState() {
-        return new ModChickenRenderState();
-    }
-
-    @Override
-    public ResourceLocation getTextureLocation(ModChickenRenderState chickenRenderState) {
+    public ResourceLocation getTextureLocation(Chicken chicken) {
         try {
-            return LOCATION_BY_VARIANT.get(chickenRenderState.variant);
+            return LOCATION_BY_VARIANT.get(((VariantMob)chicken).getVariant());
         } catch (Exception e) {
             return ResourceLocation.withDefaultNamespace("textures/entity/chicken.png");
         }
     }
 
     @Override
-    public void extractRenderState(Chicken chicken, ModChickenRenderState chickenRenderState, float f) {
-        chickenRenderState.variant = ((VariantMob) chicken).getVariant();
-        chickenRenderState.isBaby = chicken.isBaby();
-        super.extractRenderState(chicken, chickenRenderState, f);
+    protected float getBob(Chicken chicken, float f) {
+        float g = Mth.lerp(f, chicken.oFlap, chicken.flap);
+        float h = Mth.lerp(f, chicken.oFlapSpeed, chicken.flapSpeed);
+        return (Mth.sin(g) + 1.0F) * h;
     }
 
     @Override
-    public void render(ModChickenRenderState chickenRenderState, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {
-        if (chickenRenderState.variant != null) {
-            this.model = (ModChickenModel) ((AdultAndBabyModelPair)this.VARIANT_MODELS.get(chickenRenderState.variant)).getModel(chickenRenderState.isBaby);
-            if (chickenRenderState.isBaby) {
-
-            }
-            super.render(chickenRenderState, poseStack, multiBufferSource, i);
+    public void render(Chicken chicken, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {
+        if (((VariantMob)chicken).getVariant() != null) {
+            this.model = (ModChickenModel) ((AdultAndBabyModelPair)this.VARIANT_MODELS.get(((VariantMob)chicken).getVariant())).getModel(chicken.isBaby());
+            super.render(chicken, f, g, poseStack, multiBufferSource, i);
         }
     }
 }

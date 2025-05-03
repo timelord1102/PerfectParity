@@ -39,7 +39,7 @@ public abstract class CowMixin extends Animal implements VariantMob {
     @Overwrite
     @Nullable
     public Cow getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        Cow cow = (Cow)EntityType.COW.create(serverLevel, EntitySpawnReason.BREEDING);
+        Cow cow = (Cow)EntityType.COW.create(serverLevel);
         if (cow != null && ageableMob instanceof Cow cow2) {
             ((VariantMob) cow).setVariant(this.random.nextBoolean() ? this.getVariant() : ((VariantMob) cow2).getVariant());
         }
@@ -79,15 +79,14 @@ public abstract class CowMixin extends Animal implements VariantMob {
     }
 
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor accessor, DifficultyInstance difficulty,
-                                        EntitySpawnReason reason, @Nullable SpawnGroupData data) {
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, @Nullable SpawnGroupData spawnGroupData) {
 
-        if (reason != EntitySpawnReason.BREEDING) {
-            Holder<Biome> biomeHolder = accessor.getBiome(this.blockPosition());
+        if (mobSpawnType != MobSpawnType.BREEDING) {
+            Holder<Biome> biomeHolder = serverLevelAccessor.getBiome(this.blockPosition());
             MobVariant variant = MobVariant.getFromBiome(biomeHolder);
             this.setVariant(variant);
         }
-        return super.finalizeSpawn(accessor, difficulty, reason, data);
+        return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType,spawnGroupData);
     }
 }
 

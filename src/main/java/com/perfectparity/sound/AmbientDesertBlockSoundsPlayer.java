@@ -1,6 +1,5 @@
 package com.perfectparity.sound;
 
-import com.perfectparity.PerfectParity;
 import com.perfectparity.datagen.ModBlockTagProvider;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
@@ -33,7 +32,6 @@ public class AmbientDesertBlockSoundsPlayer {
         }
         if (randomSource.nextInt(2100) == 0 && AmbientDesertBlockSoundsPlayer.shouldPlayAmbientSandSound(level, blockPos)) {
             if (level instanceof ClientLevel client) {
-                PerfectParity.LOGGER.info("Playing sand Sound");
                 client.playLocalSound(
                         blockPos.getX() + 0.5,
                         blockPos.getY() + 0.5,

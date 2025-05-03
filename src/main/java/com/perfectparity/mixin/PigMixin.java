@@ -54,7 +54,7 @@ public class PigMixin extends Animal implements VariantMob {
      */
     @Overwrite
     public @Nullable Pig getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        Pig pig = (Pig)EntityType.PIG.create(serverLevel, EntitySpawnReason.BREEDING);
+        Pig pig = (Pig)EntityType.PIG.create(serverLevel);
         if (pig != null && ageableMob instanceof Pig pig2) {
             ((VariantMob) pig).setVariant(this.random.nextBoolean() ? this.getVariant() : ((VariantMob) pig2).getVariant());
         }
@@ -92,15 +92,14 @@ public class PigMixin extends Animal implements VariantMob {
     }
 
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor accessor, DifficultyInstance difficulty,
-                                        EntitySpawnReason reason, @Nullable SpawnGroupData data) {
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, @Nullable SpawnGroupData spawnGroupData) {
 
-        if (reason != EntitySpawnReason.BREEDING) {
-            Holder<Biome> biomeHolder = accessor.getBiome(this.blockPosition());
+        if (mobSpawnType != MobSpawnType.BREEDING) {
+            Holder<Biome> biomeHolder = serverLevelAccessor.getBiome(this.blockPosition());
             MobVariant variant = MobVariant.getFromBiome(biomeHolder);
             this.setVariant(variant);
         }
-        return super.finalizeSpawn(accessor, difficulty, reason, data);
+        return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType,spawnGroupData);
     }
 
 }

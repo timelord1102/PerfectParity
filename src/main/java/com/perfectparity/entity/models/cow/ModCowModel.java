@@ -1,29 +1,20 @@
 package com.perfectparity.entity.models.cow;
 
-import net.minecraft.client.model.BabyModelTransform;
 import net.minecraft.client.model.QuadrupedModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
+import net.minecraft.world.entity.Entity;
 
-import java.util.Set;
-
-public class ModCowModel extends QuadrupedModel<LivingEntityRenderState> {
-    public static final MeshTransformer BABY_TRANSFORMER = new BabyModelTransform(false, 8.0F, 6.0F, Set.of("head"));
+public class ModCowModel<T extends Entity> extends QuadrupedModel<T> {
     private static final int LEG_SIZE = 12;
 
     public ModCowModel(ModelPart modelPart) {
-        super(modelPart);
+        super(modelPart, false, 10.0F, 4.0F, 2.0F, 2.0F, 24);
     }
 
     public static LayerDefinition createBodyLayer() {
         MeshDefinition meshDefinition = createBaseCowModel();
-        return LayerDefinition.create(meshDefinition, 64, 64);
-    }
-
-    public static LayerDefinition createBabyBodyLayer() {
-        MeshDefinition meshDefinition = BABY_TRANSFORMER.apply(createBaseCowModel());
         return LayerDefinition.create(meshDefinition, 64, 64);
     }
 

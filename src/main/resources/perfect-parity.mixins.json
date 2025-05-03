@@ -3,7 +3,6 @@
   "package": "com.perfectparity.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "BiomeBuilderMixin",
     "CactusFlowerMixin",
     "ChickenMixin",
     "CowMixin",

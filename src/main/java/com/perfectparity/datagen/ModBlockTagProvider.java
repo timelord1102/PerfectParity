@@ -41,7 +41,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         // Cactus Flower
         getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE).add(ModBlocks.CACTUS_FLOWER);
         getOrCreateTagBuilder(BlockTags.FLOWERS).add(ModBlocks.CACTUS_FLOWER);
-        getOrCreateTagBuilder(BlockTags.BEE_ATTRACTIVE).add(ModBlocks.CACTUS_FLOWER);
+        getOrCreateTagBuilder(BlockTags.BEE_GROWABLES).add(ModBlocks.CACTUS_FLOWER);
         getOrCreateTagBuilder(BlockTags.WALL_POST_OVERRIDE).add(ModBlocks.CACTUS_FLOWER);
 
         //Leaf Litter
@@ -55,14 +55,14 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         //Wildflowers
         getOrCreateTagBuilder(BlockTags.FLOWERS).add(ModBlocks.WILDFLOWERS);
-        getOrCreateTagBuilder(BlockTags.BEE_ATTRACTIVE).add(ModBlocks.WILDFLOWERS);
+        getOrCreateTagBuilder(BlockTags.BEE_GROWABLES).add(ModBlocks.WILDFLOWERS);
     }
 
     protected void addVanillaTags() {
         getOrCreateTagBuilder(REPLACEABLE_BY_MUSHROOMS)
-                .forceAddTags(BlockTags.LEAVES, BlockTags.SMALL_FLOWERS)
+                .forceAddTag(BlockTags.LEAVES).forceAddTag( BlockTags.SMALL_FLOWERS)
                 .add(
-                        Blocks.PALE_MOSS_CARPET,
+                        // Blocks.PALE_MOSS_CARPET,
                         Blocks.SHORT_GRASS,
                         Blocks.FERN,
                         Blocks.DEAD_BUSH,
@@ -97,10 +97,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.FARMLAND);
 
         getOrCreateTagBuilder(TRIGGERS_AMBIENT_DESERT_DRY_VEGETATION_BLOCK_SOUNDS)
-                .forceAddTags(BlockTags.TERRACOTTA)
+                .forceAddTag(BlockTags.TERRACOTTA)
                 .add(Blocks.SAND, Blocks.RED_SAND);
 
         getOrCreateTagBuilder(TRIGGERS_AMBIENT_DESERT_SAND_BLOCK_SOUNDS)
-                .add(Blocks.SAND, Blocks.RED_SAND).forceAddTags(BlockTags.TERRACOTTA);
+                .add(Blocks.SAND, Blocks.RED_SAND).forceAddTag(BlockTags.TERRACOTTA);
     }
 }

@@ -34,12 +34,12 @@ public class FireflyBushBlock extends ModVegetationBlock implements ModBonemeala
         return CODEC;
     }
 
+    @Override
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
         if (randomSource.nextInt(30) == 0 && isMoonVisible(level) &&  level.getHeight(Types.MOTION_BLOCKING_NO_LEAVES, blockPos.getX(), blockPos.getY()) <= blockPos.getY()) {
             level.playLocalSound(blockPos, ModSounds.FIREFLY_BUSH_IDLE, SoundSource.AMBIENT, 1.0F, 1.0F, false);
         }
-
-        if (level.getMaxLocalRawBrightness(blockPos) <= 13 && randomSource.nextDouble() <= 0.7) {
+        if (isMoonVisible(level) || (level.getMaxLocalRawBrightness(blockPos) <= 13)) {
             double d = (double)blockPos.getX() + randomSource.nextDouble() * (double)10.0F - (double)5.0F;
             double e = (double)blockPos.getY() + randomSource.nextDouble() * (double)5.0F;
             double f = (double)blockPos.getZ() + randomSource.nextDouble() * (double)10.0F - (double)5.0F;
@@ -48,14 +48,17 @@ public class FireflyBushBlock extends ModVegetationBlock implements ModBonemeala
 
     }
 
+    @Override
     public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
         return ModBonemealableBlock.hasSpreadableNeighbourPos(levelReader, blockPos, blockState);
     }
 
+    @Override
     public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
         return true;
     }
 
+    @Override
     public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
         ModBonemealableBlock.findSpreadableNeighbourPos(serverLevel, blockPos, blockState).ifPresent((blockPosx) -> serverLevel.setBlockAndUpdate(blockPosx, this.defaultBlockState()));
     }

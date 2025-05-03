@@ -3,7 +3,6 @@ package com.perfectparity.datagen;
 import com.perfectparity.world.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -47,9 +46,10 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 Items.CHORUS_FLOWER,
                 Items.SPORE_BLOSSOM,
                 ModItems.CACTUS_FLOWER
-        ).addOptionalTags(
-                ItemTags.SMALL_FLOWERS,
-                ConventionalItemTags.TALL_FLOWERS
+        ).forceAddTag(
+                ItemTags.SMALL_FLOWERS
+        ).forceAddTag(
+                ItemTags.TALL_FLOWERS
         );
 
         getOrCreateTagBuilder(EGGS).add(

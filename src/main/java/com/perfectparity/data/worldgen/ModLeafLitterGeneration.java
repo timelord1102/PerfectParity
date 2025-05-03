@@ -11,7 +11,6 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 
 public class ModLeafLitterGeneration {
     public static void generateLitter() {
-        // Bushes
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.DARK_FOREST),
                 GenerationStep.Decoration.VEGETAL_DECORATION,
                 ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.parse("minecraft:patch_leaf_litter")));

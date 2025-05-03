@@ -54,6 +54,8 @@ public class PerfectParityClient implements ClientModInitializer {
 			}
 			return 0xFFFFFFFF;
 		}, ModBlocks.WILDFLOWERS);
+
+
 	}
 	private static void registerColormap() {
 		try (InputStream in = ClientEntityEvents.class.getResourceAsStream(PATH)) {
@@ -77,52 +79,33 @@ public class PerfectParityClient implements ClientModInitializer {
 				WarmCowModel::createBodyLayer
 		);
 		EntityModelLayerRegistry.registerModelLayer(
-				ModModelLayers.WARM_COW_BABY,
-				WarmCowModel::createBabyBodyLayer
-		);
-		EntityModelLayerRegistry.registerModelLayer(
 				ModModelLayers.COLD_COW,
 				ColdCowModel::createBodyLayer
-		);
-		EntityModelLayerRegistry.registerModelLayer(
-				ModModelLayers.COLD_COW_BABY,
-				ColdCowModel::createBabyBodyLayer
 		);
 
 		EntityModelLayerRegistry.registerModelLayer(
 				ModModelLayers.NEW_COW,
 				ModCowModel::createBodyLayer
 		);
-		EntityModelLayerRegistry.registerModelLayer(
-				ModModelLayers.NEW_COW_BABY,
-				ModCowModel::createBabyBodyLayer
-		);
 
 		EntityModelLayerRegistry.registerModelLayer(
 				ModModelLayers.COLD_CHICKEN,
 				ColdChickenModel::createBodyLayer
 		);
+		/*
 		EntityModelLayerRegistry.registerModelLayer(
 				ModModelLayers.COLD_CHICKEN_BABY,
 				ColdChickenModel::createBabyBodyLayer
 		);
-
+	*/
 		EntityModelLayerRegistry.registerModelLayer(
 				ModModelLayers.COLD_PIG,
 				ColdPigModel::createBodyLayer
-		);
-		EntityModelLayerRegistry.registerModelLayer(
-				ModModelLayers.COLD_PIG_BABY,
-				ColdPigModel::createBabyBodyLayer
 		);
 
 		EntityModelLayerRegistry.registerModelLayer(
 				ModModelLayers.NEW_PIG,
 				ModPigModel::createBodyLayer
-		);
-		EntityModelLayerRegistry.registerModelLayer(
-				ModModelLayers.NEW_PIG_BABY,
-				ModPigModel::createBabyBodyLayer
 		);
 
 	}

@@ -19,7 +19,7 @@ import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ModCowRenderer extends MobRenderer<Cow, CowRenderState, ModCowModel> {
+public class ModCowRenderer extends MobRenderer<Cow, ModCowModel<Cow>> {
 
     private static final Map<MobVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(MobVariant.class), map -> {
@@ -42,48 +42,33 @@ public class ModCowRenderer extends MobRenderer<Cow, CowRenderState, ModCowModel
         EnumMap<MobVariant, AdultAndBabyModelPair<ModCowModel>> map = new EnumMap<>(MobVariant.class);
         map.put(MobVariant.NORMAL, new AdultAndBabyModelPair<>(
                 new ModCowModel(context.bakeLayer(ModModelLayers.NEW_COW)),
-                new ModCowModel(context.bakeLayer(ModModelLayers.NEW_COW_BABY))
+                new ModCowModel(context.bakeLayer(ModModelLayers.NEW_COW))
         ));
         map.put(MobVariant.WARM, new AdultAndBabyModelPair<>(
                 new ModCowModel(context.bakeLayer(ModModelLayers.WARM_COW)),
-                new ModCowModel(context.bakeLayer(ModModelLayers.WARM_COW_BABY))
+                new ModCowModel(context.bakeLayer(ModModelLayers.WARM_COW))
         ));
         map.put(MobVariant.COLD, new AdultAndBabyModelPair<>(
                 new ModCowModel(context.bakeLayer(ModModelLayers.COLD_COW)),
-                new ModCowModel(context.bakeLayer(ModModelLayers.COLD_COW_BABY))
+                new ModCowModel(context.bakeLayer(ModModelLayers.COLD_COW))
         ));
         return map;
     }
 
     @Override
-    public CowRenderState createRenderState() {
-        return new CowRenderState();
-    }
-
-    @Override
-    public ResourceLocation getTextureLocation(CowRenderState cowRenderState) {
+    public ResourceLocation getTextureLocation(Cow cow) {
         try {
-            return LOCATION_BY_VARIANT.get(cowRenderState.variant);
+            return LOCATION_BY_VARIANT.get(((VariantMob)cow).getVariant());
         } catch (Exception e) {
             return ResourceLocation.withDefaultNamespace("textures/entity/cow/temperate_cow.png");
         }
     }
 
     @Override
-    public void extractRenderState(Cow cow, CowRenderState cowRenderState, float f) {
-        cowRenderState.variant = ((VariantMob) cow).getVariant();
-        cowRenderState.isBaby = cow.isBaby();
-        super.extractRenderState(cow, cowRenderState, f);
-    }
-
-    @Override
-    public void render(CowRenderState cowRenderState, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {
-        if (cowRenderState.variant != null) {
-            this.model = (ModCowModel) ((AdultAndBabyModelPair)this.VARIANT_MODELS.get(cowRenderState.variant)).getModel(cowRenderState.isBaby);
-            if (cowRenderState.isBaby) {
-
-            }
-            super.render(cowRenderState, poseStack, multiBufferSource, i);
+    public void render(Cow cow, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {
+        if (((VariantMob)cow).getVariant() != null) {
+            this.model = (ModCowModel) ((AdultAndBabyModelPair)this.VARIANT_MODELS.get(((VariantMob)cow).getVariant())).getModel(cow.isBaby());
+            super.render(cow, f, g, poseStack, multiBufferSource, i);
         }
     }
 }

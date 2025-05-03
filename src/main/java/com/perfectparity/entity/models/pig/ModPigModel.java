@@ -2,30 +2,23 @@ package com.perfectparity.entity.models.pig;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.model.BabyModelTransform;
 import net.minecraft.client.model.QuadrupedModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-
-import java.util.Set;
+import net.minecraft.world.entity.Entity;
 
 @Environment(EnvType.CLIENT)
-public class ModPigModel extends QuadrupedModel<LivingEntityRenderState> {
-    public static final MeshTransformer BABY_TRANSFORMER = new BabyModelTransform(false, 4.0F, 4.0F, Set.of("head"));
+public class ModPigModel<T extends Entity> extends QuadrupedModel<T> {
     public static final CubeDeformation cubeDeformation = CubeDeformation.NONE;
     public ModPigModel(ModelPart modelPart) {
-        super(modelPart);
+        super(modelPart, false, 4.0F, 4.0F, 2.0F, 2.0F, 24);
     }
 
     public static LayerDefinition createBodyLayer() {
         return LayerDefinition.create(createBasePigModel(), 64, 64);
     }
 
-    public static LayerDefinition createBabyBodyLayer() {
-        return LayerDefinition.create(BABY_TRANSFORMER.apply(createBasePigModel()), 64, 64);
-    }
 
     protected static MeshDefinition createBasePigModel() {
         MeshDefinition meshDefinition = QuadrupedModel.createBodyMesh(6, cubeDeformation);

@@ -4,7 +4,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
 
 public class DryFoliageColor {
     public static final int FOLIAGE_DRY_DEFAULT = -10732494;
@@ -59,9 +58,9 @@ public class DryFoliageColor {
 
     /** Helper: look up the gradient based on that corner’s biome. */
     private static int sample(BlockAndTintGetter world, BlockPos at) {
-        if (world.getBiomeFabric(at).is(Biomes.PALE_GARDEN)) {
+        /*if (world.getBiomeFabric(at).is(Biomes.PALE_GARDEN)) {
             return FOLIAGE_DRY_PALE_GARDEN;
-        }
+        }*/
         Biome biome = world.getBiomeFabric(at).value();
         double d    = Mth.clamp(biome.getBaseTemperature(), 0f, 1f);
         double e    = Mth.clamp(((GetBiomeDownfall) (Object) biome).projectParity$getDownfall(),0f, 1f);

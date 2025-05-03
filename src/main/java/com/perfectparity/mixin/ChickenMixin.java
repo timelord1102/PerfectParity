@@ -10,10 +10,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.item.ItemStack;
@@ -42,7 +39,7 @@ public class ChickenMixin extends Animal implements VariantMob {
     @Overwrite
     @Nullable
     public Chicken getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        Chicken chicken = (Chicken)EntityType.CHICKEN.create(serverLevel, EntitySpawnReason.BREEDING);
+        Chicken chicken = (Chicken)EntityType.CHICKEN.create(serverLevel);
         if (chicken != null && ageableMob instanceof Chicken chicken2) {
             ((VariantMob) chicken).setVariant(this.random.nextBoolean() ? this.getVariant() : ((VariantMob) chicken2).getVariant());
         }
@@ -87,15 +84,15 @@ public class ChickenMixin extends Animal implements VariantMob {
         return itemStack.is(ItemTags.CHICKEN_FOOD);
     }
 
-    @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor accessor, DifficultyInstance difficulty,
-                                        EntitySpawnReason reason, @Nullable SpawnGroupData data) {
 
-        if (reason != EntitySpawnReason.BREEDING && reason != EntitySpawnReason.TRIGGERED) {
-            Holder<Biome> biomeHolder = accessor.getBiome(this.blockPosition());
+    @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, @Nullable SpawnGroupData spawnGroupData) {
+
+        if (mobSpawnType != MobSpawnType.BREEDING) {
+            Holder<Biome> biomeHolder = serverLevelAccessor.getBiome(this.blockPosition());
             MobVariant variant = MobVariant.getFromBiome(biomeHolder);
             this.setVariant(variant);
         }
-        return super.finalizeSpawn(accessor, difficulty, reason, data);
+        return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType,spawnGroupData);
     }
 }

@@ -12,6 +12,9 @@ import net.minecraft.world.item.Items;
 
 import java.util.concurrent.CompletableFuture;
 
+import static net.minecraft.data.recipes.ShapedRecipeBuilder.shaped;
+import static net.minecraft.data.recipes.ShapelessRecipeBuilder.shapeless;
+
 public class ModRecipeProvider extends FabricRecipeProvider {
 
     public ModRecipeProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
@@ -19,26 +22,21 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
     @Override
-    protected RecipeProvider createRecipeProvider(HolderLookup.Provider registryLookup, RecipeOutput exporter) {
-        return new RecipeProvider(registryLookup, exporter) {
-            @Override
-            public void buildRecipes() {
-                shapeless(RecipeCategory.MISC, Items.PINK_DYE, 1).requires(ModBlocks.CACTUS_FLOWER)
-                        .unlockedBy(getHasName(ModBlocks.CACTUS_FLOWER), has(ModBlocks.CACTUS_FLOWER))
-                        .save(exporter,
+    public void buildRecipes(RecipeOutput exporter) {
+        shapeless(RecipeCategory.MISC, Items.PINK_DYE, 1).requires(ModBlocks.CACTUS_FLOWER)
+                .unlockedBy(getHasName(ModBlocks.CACTUS_FLOWER), has(ModBlocks.CACTUS_FLOWER))
+                .save(exporter,
                         String.valueOf(ResourceLocation.fromNamespaceAndPath(ResourceLocation.DEFAULT_NAMESPACE, "pink_dye_from_cactus_flower")));
-                shaped(RecipeCategory.FOOD, Items.CAKE)
-                        .define('M', Items.MILK_BUCKET)
-                        .define('S', Items.SUGAR)
-                        .define('E', ModItemTagProvider.EGGS)
-                        .define('W', Items.WHEAT)
-                        .pattern("MMM")
-                        .pattern("SES")
-                        .pattern("WWW")
-                        .unlockedBy(getHasName(Items.MILK_BUCKET), has(Items.MILK_BUCKET))
-                        .save(exporter);
-            }
-        };
+        shaped(RecipeCategory.FOOD, Items.CAKE)
+                .define('M', Items.MILK_BUCKET)
+                .define('S', Items.SUGAR)
+                .define('E', ModItemTagProvider.EGGS)
+                .define('W', Items.WHEAT)
+                .pattern("MMM")
+                .pattern("SES")
+                .pattern("WWW")
+                .unlockedBy(getHasName(Items.MILK_BUCKET), has(Items.MILK_BUCKET))
+                .save(exporter);
     }
 
     @Override

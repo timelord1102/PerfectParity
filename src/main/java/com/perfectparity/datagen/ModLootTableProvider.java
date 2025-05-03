@@ -23,9 +23,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
-        add(ModBlocks.BUSH, createShearsOrSilkTouchOnlyDrop(ModBlocks.BUSH));
-        add(ModBlocks.SHORT_DRY_GRASS, createShearsOrSilkTouchOnlyDrop(ModBlocks.SHORT_DRY_GRASS));
-        add(ModBlocks.TALL_DRY_GRASS, createShearsOrSilkTouchOnlyDrop(ModBlocks.TALL_DRY_GRASS));
+        add(ModBlocks.BUSH, createShearsOnlyDrop(ModBlocks.BUSH));
+        add(ModBlocks.SHORT_DRY_GRASS, createShearsOnlyDrop(ModBlocks.SHORT_DRY_GRASS));
+        add(ModBlocks.TALL_DRY_GRASS, createShearsOnlyDrop(ModBlocks.TALL_DRY_GRASS));
         dropSelf(ModBlocks.FIREFLY_BUSH);
         dropSelf(ModBlocks.CACTUS_FLOWER);
         add(ModBlocks.LEAF_LITTER, createSegmentedBlockDrops(ModBlocks.LEAF_LITTER));

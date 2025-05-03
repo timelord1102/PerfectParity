@@ -9,13 +9,7 @@
     "minecraft:chorus_flower",
     "minecraft:spore_blossom",
     "minecraft:cactus_flower",
-    {
-      "id": "#minecraft:small_flowers",
-      "required": false
-    },
-    {
-      "id": "#c:flowers/tall",
-      "required": false
-    }
+    "#minecraft:small_flowers",
+    "#minecraft:tall_flowers"
   ]
 }

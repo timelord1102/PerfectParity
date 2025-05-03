@@ -5,13 +5,11 @@ import com.perfectparity.utils.interfaces.VariantMob;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -19,17 +17,17 @@ import net.minecraft.world.phys.HitResult;
 public class CustomThrownEgg extends ThrowableItemProjectile {
     private String variant;
 
-    public CustomThrownEgg(EntityType<? extends CustomThrownEgg> entityType, Level level) {
-        super(entityType, level);
+    public CustomThrownEgg(Level level) {
+        super(EntityType.EGG, level);
     }
 
-    public CustomThrownEgg(Level level, double d, double e, double f, ItemStack itemStack, String variant) {
-        super(EntityType.EGG, d, e, f, level, itemStack);
+    public CustomThrownEgg(double d, double e, double f, Level level, String variant) {
+        super(EntityType.EGG, d, e, f, level);
         this.variant = variant;
     }
 
-    public CustomThrownEgg(Level level, LivingEntity livingEntity, ItemStack itemStack, String variant) {
-        super(EntityType.EGG, livingEntity, level, itemStack);
+    public CustomThrownEgg(Level level, LivingEntity livingEntity, String variant) {
+        super(EntityType.EGG, livingEntity, level);
         this.variant = variant;
     }
 
@@ -58,7 +56,7 @@ public class CustomThrownEgg extends ThrowableItemProjectile {
                     i = 4;
                 }
                 for(int j = 0; j < i; ++j) {
-                    Chicken chicken = EntityType.CHICKEN.create(this.level(), EntitySpawnReason.TRIGGERED);
+                    Chicken chicken = EntityType.CHICKEN.create(this.level());
                     if (chicken != null) {
                         chicken.setAge(-24000);
                         ((VariantMob) chicken).setVariant(MobVariant.getById(variant));

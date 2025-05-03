@@ -3,7 +3,7 @@ package com.perfectparity.world.item;
 import com.perfectparity.world.level.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
-import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -12,9 +12,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
-
-import java.util.function.BiFunction;
-import java.util.function.Function;
 
 public class ModItems {
     public static final Item BUSH;
@@ -42,8 +39,8 @@ public class ModItems {
         } else WILDFLOWERS = null;
         LEAF_LITTER = registerBlock(ModBlocks.LEAF_LITTER);
         FIREFLY_BUSH = registerBlock(ModBlocks.FIREFLY_BUSH);
-        BLUE_EGG = registerItem(itemId("blue_egg"), properties -> new CustomEggItem("cold", properties), new Item.Properties().stacksTo(16));
-        BROWN_EGG = registerItem(itemId("brown_egg"), properties -> new CustomEggItem("warm", properties), new Item.Properties().stacksTo(16));
+        BLUE_EGG = registerItem(itemId("blue_egg"), new CustomEggItem("cold", new Item.Properties().stacksTo(16)));
+        BROWN_EGG = registerItem(itemId("brown_egg"), new CustomEggItem("warm", new Item.Properties().stacksTo(16)));
     }
 
     private static ResourceKey<Item> itemId(String string) {
@@ -51,28 +48,28 @@ public class ModItems {
     }
 
     public static Item registerBlock(Block block) {
-        return registerBlock(block, BlockItem::new);
+        return registerBlock(new BlockItem(block, new Item.Properties()));
     }
 
-    public static Item registerBlock(Block block, BiFunction<Block, Item.Properties, Item> biFunction) {
-        return registerBlock(block, biFunction, new Item.Properties());
+
+    public static Item registerBlock(BlockItem blockItem) {
+        return registerBlock(blockItem.getBlock(), blockItem);
     }
 
-    public static Item registerBlock(Block block, BiFunction<Block, Item.Properties, Item> biFunction, Item.Properties properties) {
-        return registerItem(blockIdToItemId(block.builtInRegistryHolder().key()), (propertiesx) -> biFunction.apply(block, propertiesx), properties.useBlockDescriptionPrefix());
+    public static Item registerBlock(Block block, Item item) {
+        return registerItem(BuiltInRegistries.BLOCK.getKey(block), item);
     }
 
-    public static Item registerItem(ResourceKey<Item> resourceKey, Function<Item.Properties, Item> function, Item.Properties properties) {
-        Item item = function.apply(properties.setId(resourceKey));
-        if (item instanceof BlockItem blockItem) {
-            blockItem.registerBlocks(Item.BY_BLOCK, item);
+    public static Item registerItem(ResourceLocation resourceLocation, Item item) {
+        return registerItem(ResourceKey.create(BuiltInRegistries.ITEM.key(), resourceLocation), item);
+    }
+
+    public static Item registerItem(ResourceKey<Item> resourceKey, Item item) {
+        if (item instanceof BlockItem) {
+            ((BlockItem)item).registerBlocks(Item.BY_BLOCK, item);
         }
 
-        return Registry.register(BuiltInRegistries.ITEM, resourceKey, item);
-    }
-
-    private static ResourceKey<Item> blockIdToItemId(ResourceKey<Block> resourceKey) {
-        return ResourceKey.create(Registries.ITEM, resourceKey.location());
+        return (Item)Registry.register(BuiltInRegistries.ITEM, resourceKey, item);
     }
 
     public static void initialize() {
@@ -106,9 +103,9 @@ public class ModItems {
     }
 
     public static void registerFuels() {
-        FuelRegistryEvents.BUILD.register((builder, context) -> builder.add(LEAF_LITTER, 100));
-        FuelRegistryEvents.BUILD.register((builder, context) -> builder.add(SHORT_DRY_GRASS, 100));
-        FuelRegistryEvents.BUILD.register((builder, context) -> builder.add(TALL_DRY_GRASS, 100));
+        FuelRegistry.INSTANCE.add(LEAF_LITTER, 100);
+        FuelRegistry.INSTANCE.add(SHORT_DRY_GRASS, 100);
+        FuelRegistry.INSTANCE.add(TALL_DRY_GRASS, 100);
     }
 
     public static void registerCompostable() {

@@ -15,7 +15,6 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.Wolf;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -28,6 +27,7 @@ import java.util.Map;
 
 @Mixin(Wolf.class)
 public class WolfMixin {
+
     private static final EntityDataAccessor<String> DATA_SOUND_VARIANT_ID = SynchedEntityData.defineId(Wolf.class, EntityDataSerializers.STRING);
     private static final Map<WolfSoundVariant, Map<String, SoundEvent>> SOUND_VARIANT_MAP =
             Util.make(Maps.newEnumMap(WolfSoundVariant.class), map -> {
@@ -69,7 +69,7 @@ public class WolfMixin {
     }
 
     @Inject(method = "finalizeSpawn", at = @At("RETURN"))
-    public void defineSynchedData(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, EntitySpawnReason entitySpawnReason, SpawnGroupData spawnGroupData, CallbackInfoReturnable<SpawnGroupData> cir) {
+    public void defineSynchedData(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, SpawnGroupData spawnGroupData, CallbackInfoReturnable<SpawnGroupData> cir) {
         this.setSoundVariant(WolfSoundVariant.getRandom());
     }
 
@@ -112,7 +112,7 @@ public class WolfMixin {
      */
     @Overwrite
     public Wolf getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        Wolf wolf = (Wolf)EntityType.WOLF.create(serverLevel, EntitySpawnReason.BREEDING);
+        Wolf wolf = (Wolf)EntityType.WOLF.create(serverLevel);
         if (wolf != null && ageableMob instanceof Wolf wolf2) {
             if (((Entity)(Object)this).getRandom().nextBoolean()) {
                 wolf.setVariant(((Wolf)(Object)this).getVariant());
@@ -120,12 +120,14 @@ public class WolfMixin {
                 wolf.setVariant(wolf2.getVariant());
             }
 
-            if (((Wolf)(Object)this).isTame()) {
-                ((Wolf) wolf).setOwnerUUID(((Wolf)(Object)this).getOwnerUUID());
+            if (((Wolf) (Object) this).isTame()) {
+                wolf.setOwnerUUID(((Wolf) (Object) this).getOwnerUUID());
                 wolf.setTame(true, true);
-                DyeColor dyeColor = ((Wolf)(Object)this).getCollarColor();
-                DyeColor dyeColor2 = wolf2.getCollarColor();
-                ((WolfInvoker) (Object) wolf).canSetCollarColor(DyeColor.getMixedColor(serverLevel, dyeColor, dyeColor2));
+                if (((Wolf) (Object) this).getRandom().nextBoolean()) {
+                    ((WolfInvoker) (Object) wolf).canSetCollarColor(((Wolf) (Object) this).getCollarColor());
+                } else {
+                    ((WolfInvoker) (Object) wolf).canSetCollarColor(wolf2.getCollarColor());
+                }
             }
 
             ((WolfMixin)(Object)wolf).setSoundVariant(WolfSoundVariant.getRandom());

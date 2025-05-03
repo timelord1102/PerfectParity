@@ -39,10 +39,13 @@ public class ModBiomeTagProvider extends FabricTagProvider<Biome> {
                 Biomes.DEEP_LUKEWARM_OCEAN,
                 Biomes.LUKEWARM_OCEAN
                 )
-                .forceAddTags(
-                        BiomeTags.IS_NETHER,
-                        BiomeTags.IS_SAVANNA,
-                        BiomeTags.IS_JUNGLE,
+                .forceAddTag(
+                        BiomeTags.IS_NETHER
+                ).forceAddTag(
+                        BiomeTags.IS_SAVANNA
+                ).forceAddTag(
+                        BiomeTags.IS_JUNGLE
+                ).forceAddTag(
                         BiomeTags.IS_BADLANDS
                 );
 
@@ -69,7 +72,7 @@ public class ModBiomeTagProvider extends FabricTagProvider<Biome> {
                 Biomes.WINDSWEPT_GRAVELLY_HILLS,
                 Biomes.STONY_PEAKS
                 )
-                .forceAddTags(
+                .forceAddTag(
                         BiomeTags.IS_END
                 );
 

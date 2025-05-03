@@ -7,7 +7,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
@@ -53,9 +52,11 @@ public class PlaceOnGroundDecorator extends TreeDecorator {
             }
 
             RandomSource randomSource = context.random();
-            BoundingBox boundingBox = (new BoundingBox(j, i, l, k, i, m)).inflatedBy(this.radius, this.height, this.radius);
-            BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
+            int minY = i;
+            int maxY = i + 1;
 
+            BoundingBox boundingBox = new BoundingBox(j, minY, l, k, maxY, m).inflatedBy(this.radius, 0, this.radius);
+            BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
             for(int n = 0; n < this.tries; ++n) {
                 mutableBlockPos.set(randomSource.nextIntBetweenInclusive(boundingBox.minX(), boundingBox.maxX()), randomSource.nextIntBetweenInclusive(boundingBox.minY(), boundingBox.maxY()), randomSource.nextIntBetweenInclusive(boundingBox.minZ(), boundingBox.maxZ()));
                 this.attemptToPlaceBlockAbove(context, mutableBlockPos);
@@ -64,13 +65,18 @@ public class PlaceOnGroundDecorator extends TreeDecorator {
         }
     }
 
-    private void attemptToPlaceBlockAbove(TreeDecorator.Context context, BlockPos blockPos) {
-        BlockPos blockPos2 = blockPos.above();
-        if (context.level().isStateAtPosition(blockPos2, (blockState) -> blockState.isAir() || blockState.is(Blocks.VINE)) && context.checkBlock(blockPos, BlockBehaviour.BlockStateBase::isSolidRender)) {
-            context.setBlock(blockPos2, this.blockStateProvider.getState(context.random(), blockPos2));
-        }
+    private void attemptToPlaceBlockAbove(TreeDecorator.Context context, BlockPos pos) {
+        BlockPos below = pos.below();
 
+        // Ensure block below is solid ground (e.g., not air), and current block is replaceable
+        boolean validBelow = !context.isAir(below);
+        boolean canReplace = context.level().isStateAtPosition(pos, state -> state.isAir() || state.is(Blocks.VINE));
+
+        if (validBelow && canReplace) {
+            context.setBlock(pos, this.blockStateProvider.getState(context.random(), pos));
+        }
     }
+
 
     public static List<BlockPos> getLowestTrunkOrRootOfTree(TreeDecorator.Context context) {
         List<BlockPos> list = Lists.newArrayList();

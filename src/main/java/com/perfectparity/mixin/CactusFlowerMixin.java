@@ -8,7 +8,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CactusBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.redstone.Orientation;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -51,7 +50,7 @@ public abstract class CactusFlowerMixin extends Block {
 				serverLevel.setBlockAndUpdate(blockPos2, this.defaultBlockState());
 				BlockState blockState2 = (BlockState)blockState.setValue(AGE, 0);
 				serverLevel.setBlock(blockPos, blockState2, 260);
-				serverLevel.neighborChanged(blockState2, blockPos2, this, (Orientation)null, false);
+				serverLevel.neighborChanged(blockState2, blockPos2, this, null, false);
 			}
 
 			if (j < 15) {

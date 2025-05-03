@@ -1,5 +1,5 @@
-// 1.21.4	-999999999-01-01T00:00:00	Perfect Parity/Tags for minecraft:item
-070bad91a3267ce03f13657c764fb7767a473fb5 data/minecraft/tags/item/bee_food.json
-45a97050e7cb3ad898e1fe68248500278f7e37c9 data/minecraft/tags/item/eggs.json
-af4435ea36768f2c04f8398084ac6f0254f18c30 data/minecraft/tags/item/flowers.json
-542731034dcf8597bd35e3d136ebf00f51b0ff94 data/minecraft/tags/item/sheep_food.json
+// 1.21.1	2025-05-03T19:21:51.6361868	Perfect Parity/Tags for minecraft:item
+542731034dcf8597bd35e3d136ebf00f51b0ff94 data\minecraft\tags\item\sheep_food.json
+45a97050e7cb3ad898e1fe68248500278f7e37c9 data\minecraft\tags\item\eggs.json
+7ee3a690fa4c408008884e02a8014385bdad55ef data\minecraft\tags\item\flowers.json
+070bad91a3267ce03f13657c764fb7767a473fb5 data\minecraft\tags\item\bee_food.json
