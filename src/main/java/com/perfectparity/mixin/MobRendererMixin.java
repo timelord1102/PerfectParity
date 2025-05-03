@@ -1,8 +1,8 @@
 package com.perfectparity.mixin;
 
-import com.perfectparity.entity.client.ModChickenRenderer;
-import com.perfectparity.entity.client.ModCowRenderer;
-import com.perfectparity.entity.client.ModPigRenderer;
+import com.perfectparity.entity.renderer.ModChickenRenderer;
+import com.perfectparity.entity.renderer.ModCowRenderer;
+import com.perfectparity.entity.renderer.ModPigRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.world.entity.EntityType;
 import org.spongepowered.asm.mixin.Final;

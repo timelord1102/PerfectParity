@@ -1,6 +1,6 @@
 package com.perfectparity.utils.interfaces;
 
-import com.perfectparity.entity.custom.MobVariant;
+import com.perfectparity.entity.utils.MobVariant;
 
 public interface VariantMob {
 

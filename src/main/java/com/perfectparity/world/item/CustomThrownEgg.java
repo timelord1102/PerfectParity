@@ -1,6 +1,6 @@
 package com.perfectparity.world.item;
 
-import com.perfectparity.entity.custom.MobVariant;
+import com.perfectparity.entity.utils.MobVariant;
 import com.perfectparity.utils.interfaces.VariantMob;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;

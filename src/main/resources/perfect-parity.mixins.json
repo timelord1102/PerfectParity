@@ -11,7 +11,9 @@
     "GetBiomeWeatherMixin",
     "PigMixin",
     "SandMixin",
-    "SheepMixin"
+    "SheepMixin",
+    "WolfInvoker",
+    "WolfMixin"
   ],
   "injectors": {
     "defaultRequire": 1

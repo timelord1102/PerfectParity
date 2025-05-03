@@ -1,7 +1,12 @@
 package com.perfectparity;
 
-import com.perfectparity.entity.client.*;
 import com.perfectparity.entity.models.ModModelLayers;
+import com.perfectparity.entity.models.chicken.ColdChickenModel;
+import com.perfectparity.entity.models.cow.ColdCowModel;
+import com.perfectparity.entity.models.cow.ModCowModel;
+import com.perfectparity.entity.models.cow.WarmCowModel;
+import com.perfectparity.entity.models.pig.ColdPigModel;
+import com.perfectparity.entity.models.pig.ModPigModel;
 import com.perfectparity.particle.FireflyParticle;
 import com.perfectparity.particle.ModParticles;
 import com.perfectparity.utils.DryFoliageColor;
