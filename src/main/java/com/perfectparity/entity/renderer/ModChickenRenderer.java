@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.animal.Chicken;
 
 import java.util.EnumMap;
@@ -73,6 +74,8 @@ public class ModChickenRenderer extends MobRenderer<Chicken, ModChickenRenderSta
     public void extractRenderState(Chicken chicken, ModChickenRenderState chickenRenderState, float f) {
         chickenRenderState.variant = ((VariantMob) chicken).getVariant();
         chickenRenderState.isBaby = chicken.isBaby();
+        chickenRenderState.flap = Mth.lerp(f, chicken.oFlap, chicken.flap);
+        chickenRenderState.flapSpeed = Mth.lerp(f, chicken.oFlapSpeed, chicken.flapSpeed);
         super.extractRenderState(chicken, chickenRenderState, f);
     }
 
