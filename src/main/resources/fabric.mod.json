@@ -3,9 +3,9 @@
 	"id": "perfectparity",
 	"version": "${version}",
 	"name": "Perfect Parity",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A near 1:1 backport of Minecraft 1.21.5, Spring to Life Update",
 	"authors": [
-		"Me!"
+		"timelord1102"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",

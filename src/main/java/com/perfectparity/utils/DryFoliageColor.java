@@ -1,6 +1,7 @@
 package com.perfectparity.utils;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.biome.Biome;
@@ -59,10 +60,20 @@ public class DryFoliageColor {
 
     /** Helper: look up the gradient based on that corner’s biome. */
     private static int sample(BlockAndTintGetter world, BlockPos at) {
+
+        if (world == null || at == null) {
+            return FOLIAGE_DRY_DEFAULT;
+        }
+
+        Holder<Biome> entry = world.getBiomeFabric(at);
+        if (entry == null || !entry.isBound()) {
+            return FOLIAGE_DRY_DEFAULT;
+        }
+
         if (world.getBiomeFabric(at).is(Biomes.PALE_GARDEN)) {
             return FOLIAGE_DRY_PALE_GARDEN;
         }
-        Biome biome = world.getBiomeFabric(at).value();
+        Biome biome = entry.value();
         double d    = Mth.clamp(biome.getBaseTemperature(), 0f, 1f);
         double e    = Mth.clamp(((GetBiomeDownfall) (Object) biome).projectParity$getDownfall(),0f, 1f);
         return get(d, e);
