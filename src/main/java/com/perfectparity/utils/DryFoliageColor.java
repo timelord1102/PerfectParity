@@ -1,6 +1,10 @@
 package com.perfectparity.utils;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.biome.Biome;
@@ -58,10 +62,23 @@ public class DryFoliageColor {
 
     /** Helper: look up the gradient based on that corner’s biome. */
     private static int sample(BlockAndTintGetter world, BlockPos at) {
-        /*if (world.getBiomeFabric(at).is(Biomes.PALE_GARDEN)) {
+        if (world == null || at == null) {
+            return FOLIAGE_DRY_DEFAULT;
+        }
+
+        Holder<Biome> entry = world.getBiomeFabric(at);
+        if (entry == null || !entry.isBound()) {
+            return FOLIAGE_DRY_DEFAULT;
+        }
+
+        ResourceKey<Biome> paleGardenKey =
+                ResourceKey.create(Registries.BIOME, ResourceLocation.withDefaultNamespace("pale_garden"));
+        if (entry.is(paleGardenKey)) {
+            // even if the Pale Garden mod isn’t present, this Identifier check is safe—
+            // it’ll simply never match unless a biome really has that ID.
             return FOLIAGE_DRY_PALE_GARDEN;
-        }*/
-        Biome biome = world.getBiomeFabric(at).value();
+        }
+        Biome biome = entry.value();
         double d    = Mth.clamp(biome.getBaseTemperature(), 0f, 1f);
         double e    = Mth.clamp(((GetBiomeDownfall) (Object) biome).projectParity$getDownfall(),0f, 1f);
         return get(d, e);
