@@ -10,6 +10,7 @@ import com.perfectparity.entity.models.pig.ModPigModel;
 import com.perfectparity.particle.FireflyParticle;
 import com.perfectparity.particle.ModParticles;
 import com.perfectparity.utils.DryFoliageColor;
+import com.perfectparity.world.item.ModEntityTypes;
 import com.perfectparity.world.level.block.ModBlocks;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -17,8 +18,10 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientEntityEvents;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -55,6 +58,16 @@ public class PerfectParityClient implements ClientModInitializer {
 			return 0xFFFFFFFF;
 		}, ModBlocks.WILDFLOWERS);
 
+
+		EntityRendererRegistry.register(
+				ModEntityTypes.BLUE_EGG,
+                ThrownItemRenderer::new
+		);
+
+		EntityRendererRegistry.register(
+				ModEntityTypes.BROWN_EGG,
+				ThrownItemRenderer::new
+		);
 
 	}
 	private static void registerColormap() {

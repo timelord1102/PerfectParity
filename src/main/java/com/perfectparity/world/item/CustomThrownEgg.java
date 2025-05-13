@@ -13,23 +13,27 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+import org.jetbrains.annotations.NotNull;
 
 public class CustomThrownEgg extends ThrowableItemProjectile {
-    private String variant;
+    private final String variant;
 
-    public CustomThrownEgg(Level level) {
-        super(EntityType.EGG, level);
-    }
-
-    public CustomThrownEgg(double d, double e, double f, Level level, String variant) {
-        super(EntityType.EGG, d, e, f, level);
+    public CustomThrownEgg(EntityType<CustomThrownEgg> entityType, double d, double e, double f, Level level, String variant) {
+        super(entityType, d, e, f, level);
         this.variant = variant;
     }
 
-    public CustomThrownEgg(Level level, LivingEntity livingEntity, String variant) {
-        super(EntityType.EGG, livingEntity, level);
+    public CustomThrownEgg(EntityType<CustomThrownEgg> entityType, Level level, LivingEntity livingEntity, String variant) {
+        super(entityType, livingEntity, level);
         this.variant = variant;
     }
+
+
+    public CustomThrownEgg(EntityType<CustomThrownEgg> entityType, Level world, String variant) {
+        super(entityType, world);
+        this.variant = variant;
+    }
+
 
     public void handleEntityEvent(byte b) {
         if (b == 3) {
@@ -75,9 +79,9 @@ public class CustomThrownEgg extends ThrowableItemProjectile {
 
     }
 
-
     @Override
-    protected Item getDefaultItem() {
-        return ModItems.BLUE_EGG; // or your custom item
+    protected @NotNull Item getDefaultItem() {
+        System.out.println(variant);
+        return ModItems.BROWN_EGG;
     }
 }

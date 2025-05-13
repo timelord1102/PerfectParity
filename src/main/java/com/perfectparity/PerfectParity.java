@@ -7,6 +7,7 @@ import com.perfectparity.data.worldgen.features.decorators.ModTreeDecoratorType;
 import com.perfectparity.entity.ModEntities;
 import com.perfectparity.particle.ModParticles;
 import com.perfectparity.utils.ModCustomTrades;
+import com.perfectparity.world.item.ModEntityTypes;
 import com.perfectparity.world.item.ModItems;
 import com.perfectparity.world.level.block.ModBlocks;
 import net.fabricmc.api.ModInitializer;
@@ -39,5 +40,6 @@ public class PerfectParity implements ModInitializer {
 		ModTreeDecoratorType.registerTreeDecorators();
 		ModRegistries.registerRegistries();
 		ModEntities.registerModEntities();
+		ModEntityTypes.registerEntityTypes();
 	}
 }
