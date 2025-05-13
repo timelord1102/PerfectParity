@@ -1,3 +1,8 @@
+# DOWNLOADS FOUND ON [MODRINTH](https://modrinth.com/mod/perfect-parity-1-21-5/versions)
+
+
+
+
 ## Don't Wait
 I was sick of Mojang changing and breaking so many mods every update. I wanted to play with my modpack but didn't want to wait for the new features. So this mod asks "Why not both?".
 
