@@ -35,7 +35,7 @@ public class ModChickenRenderer extends MobRenderer<Chicken, ModChickenRenderSta
     private Map<MobVariant, AdultAndBabyModelPair<ModChickenModel>> VARIANT_MODELS = new HashMap<>();
 
     public ModChickenRenderer(EntityRendererProvider.Context context) {
-        super(context, new ModChickenModel(context.bakeLayer(ModelLayers.CHICKEN)), 0.7F);
+        super(context, new ModChickenModel(context.bakeLayer(ModelLayers.CHICKEN)), 0.3F);
         this.VARIANT_MODELS = bakeModels(context);
     }
 
@@ -83,9 +83,6 @@ public class ModChickenRenderer extends MobRenderer<Chicken, ModChickenRenderSta
     public void render(ModChickenRenderState chickenRenderState, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {
         if (chickenRenderState.variant != null) {
             this.model = (ModChickenModel) ((AdultAndBabyModelPair)this.VARIANT_MODELS.get(chickenRenderState.variant)).getModel(chickenRenderState.isBaby);
-            if (chickenRenderState.isBaby) {
-
-            }
             super.render(chickenRenderState, poseStack, multiBufferSource, i);
         }
     }
