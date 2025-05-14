@@ -2,5 +2,7 @@
   "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "minecraft:block/bush"
-  }
+  },
+  "overrides": [],
+  "tintindex": 0
 }

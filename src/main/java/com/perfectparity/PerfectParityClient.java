@@ -22,6 +22,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.world.level.GrassColor;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -36,7 +37,12 @@ public class PerfectParityClient implements ClientModInitializer {
 		registerModelLayers();
         // This entrypoint is suitable for setting up client-specific logic, such as rendering.
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BUSH, RenderType.cutout());
-		ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> BiomeColors.getAverageGrassColor(world, pos), ModBlocks.BUSH);
+		ColorProviderRegistry.BLOCK.register(
+				(state, world, pos, tintIndex) ->
+						(world != null && pos != null) ? BiomeColors.getAverageGrassColor(world, pos) : GrassColor.getDefaultColor(),
+				ModBlocks.BUSH
+		);
+		ColorProviderRegistry.ITEM.register((state, tintIndex) -> GrassColor.getDefaultColor(), ModBlocks.BUSH.asItem());
 
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FIREFLY_BUSH, RenderType.cutout());
 		ParticleFactoryRegistry.getInstance().register(ModParticles.FIREFLY, FireflyParticle.FireflyProvider::new);
@@ -57,7 +63,6 @@ public class PerfectParityClient implements ClientModInitializer {
 			}
 			return 0xFFFFFFFF;
 		}, ModBlocks.WILDFLOWERS);
-
 
 		EntityRendererRegistry.register(
 				ModEntityTypes.BLUE_EGG,
