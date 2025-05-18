@@ -1,0 +1,12 @@
+{
+  "block.minecraft.bush": "灌木",
+  "block.minecraft.firefly_bush" : "萤火虫灌木",
+  "block.minecraft.cactus_flower" : "仙人掌花",
+  "block.minecraft.leaf_litter": "枯叶",
+  "block.minecraft.tall_dry_grass": "高干草地",
+  "block.minecraft.short_dry_grass": "矮干草地",
+  "block.minecraft.wildflowers": "野花",
+  "item.minecraft.brown_egg": "棕色鸡蛋",
+  "item.minecraft.blue_egg": "蓝色鸡蛋",
+  "subtitles.block.firefly_bush.idle": "萤火虫嗡嗡声"
+}
